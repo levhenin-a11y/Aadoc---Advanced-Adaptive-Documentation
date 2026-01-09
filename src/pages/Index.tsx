@@ -1,13 +1,40 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Eye, Upload } from "lucide-react";
+import MainLayout from "@/components/layout/MainLayout";
+import ActionCard from "@/components/cards/ActionCard";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <MainLayout>
+      {/* Tagline */}
+      <div className="text-center mb-8">
+        <h2 className="text-xl md:text-2xl font-medium text-primary-foreground">
+          Consult / Upload / Assign &gt; Done.
+        </h2>
       </div>
-    </div>
+
+      {/* Action Cards */}
+      <section className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+        {/* Consult Card */}
+        <ActionCard
+          title="CONSULT"
+          description="Search the database and consult documents."
+          icon={<Eye className="h-8 w-8 text-primary-foreground" />}
+          permissionLabel="You must be READER"
+          permissionType="reader"
+          onAction={() => console.log("Navigate to consult")}
+        />
+
+        {/* Upload Card */}
+        <ActionCard
+          title="UPLOAD"
+          description="Upload document and create the entry in the database."
+          icon={<Upload className="h-8 w-8 text-primary-foreground" />}
+          permissionLabel="You must be USER"
+          permissionType="user"
+          onAction={() => console.log("Navigate to upload")}
+        />
+      </section>
+    </MainLayout>
   );
 };
 
