@@ -13,12 +13,27 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Roboto", "system-ui", "sans-serif"],
+        serif: ["Merriweather", "Georgia", "serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
+        "border-muted": "hsl(var(--border-muted))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        surface: {
+          DEFAULT: "hsl(var(--surface))",
+          secondary: "hsl(var(--surface-secondary))",
+          tertiary: "hsl(var(--surface-tertiary))",
+        },
+        ink: {
+          DEFAULT: "hsl(var(--ink))",
+          secondary: "hsl(var(--ink-secondary))",
+          muted: "hsl(var(--ink-muted))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -38,6 +53,10 @@ export default {
         success: {
           DEFAULT: "hsl(var(--success))",
           foreground: "hsl(var(--success-foreground))",
+        },
+        info: {
+          DEFAULT: "hsl(var(--info))",
+          foreground: "hsl(var(--info-foreground))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
