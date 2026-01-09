@@ -2,80 +2,164 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Aadoc Design System - Adapted Advanced Documentation */
+/* Aadoc Design System - PRD-MVP Conformity */
 
 @layer base {
   :root {
-    /* Core backgrounds */
-    --background: 0 0% 97%;
-    --foreground: 220 20% 20%;
-
+    /* PRD Color Palette - Light Mode */
+    
+    /* Primary Blue */
+    --primary: 229 68% 55%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Accent Blue (lighter) */
+    --accent: 229 100% 71%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Surfaces */
+    --background: 0 0% 100%;
+    --surface: 0 0% 100%;
+    --surface-secondary: 0 0% 95%;
+    --surface-tertiary: 214 32% 91%;
+    
+    /* Ink/Text */
+    --foreground: 222 47% 11%;
+    --ink: 222 47% 11%;
+    --ink-secondary: 0 0% 42%;
+    --ink-muted: 215 16% 62%;
+    
+    /* Borders */
+    --border: 214 32% 81%;
+    --border-muted: 214 32% 91%;
+    
     /* Card surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 20%;
-
+    --card-foreground: 222 47% 11%;
+    
     /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 20%;
-
-    /* Primary - Blue brand color */
-    --primary: 229 76% 59%;
-    --primary-foreground: 0 0% 100%;
-
-    /* Secondary - Light blue tones */
-    --secondary: 229 76% 95%;
-    --secondary-foreground: 229 76% 40%;
-
+    --popover-foreground: 222 47% 11%;
+    
+    /* Secondary */
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 222 47% 11%;
+    
     /* Muted surfaces */
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 10% 46%;
-
-    /* Accent - Highlight elements */
-    --accent: 229 76% 59%;
-    --accent-foreground: 0 0% 100%;
-
-    /* Destructive/Warning - Red for permissions */
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 100%;
-
-    /* Warning - Orange tones */
-    --warning: 25 95% 53%;
-    --warning-foreground: 0 0% 100%;
-
-    /* Success */
-    --success: 142 76% 36%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 42%;
+    
+    /* Utility Colors */
+    --success: 160 84% 52%;
     --success-foreground: 0 0% 100%;
-
-    /* Borders and inputs */
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 229 76% 59%;
-
+    
+    --warning: 43 96% 56%;
+    --warning-foreground: 222 47% 11%;
+    
+    --destructive: 0 84% 71%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --info: 213 94% 68%;
+    --info-foreground: 0 0% 100%;
+    
+    /* Input and Ring */
+    --input: 214 32% 81%;
+    --ring: 229 68% 55%;
+    
     --radius: 0.5rem;
-
+    
     /* Sidebar - Aadoc blue theme */
-    --sidebar-background: 229 76% 59%;
+    --sidebar-background: 229 68% 55%;
     --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 0 0% 100%;
-    --sidebar-primary-foreground: 229 76% 59%;
-    --sidebar-accent: 229 76% 50%;
+    --sidebar-primary-foreground: 229 68% 55%;
+    --sidebar-accent: 229 68% 45%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 229 60% 70%;
+    --sidebar-border: 229 50% 65%;
     --sidebar-ring: 0 0% 100%;
-
+    
     /* Header */
-    --header-background: 229 76% 59%;
+    --header-background: 229 68% 55%;
     --header-foreground: 0 0% 100%;
-
+    
     /* Footer */
-    --footer-background: 220 20% 20%;
-    --footer-foreground: 220 14% 80%;
+    --footer-background: 222 47% 11%;
+    --footer-foreground: 214 32% 81%;
+  }
+  
+  .dark {
+    /* PRD Color Palette - Dark Mode */
+    
+    /* Primary Blue (lighter for dark mode) */
+    --primary: 229 100% 68%;
+    --primary-foreground: 222 47% 11%;
+    
+    /* Accent Blue */
+    --accent: 229 100% 75%;
+    --accent-foreground: 222 47% 11%;
+    
+    /* Surfaces (dark) */
+    --background: 222 47% 11%;
+    --surface: 222 47% 11%;
+    --surface-secondary: 217 33% 17%;
+    --surface-tertiary: 215 25% 27%;
+    
+    /* Ink/Text (light for dark mode) */
+    --foreground: 210 40% 96%;
+    --ink: 210 40% 96%;
+    --ink-secondary: 215 16% 72%;
+    --ink-muted: 215 16% 52%;
+    
+    /* Borders */
+    --border: 217 33% 27%;
+    --border-muted: 217 33% 22%;
+    
+    /* Card surfaces */
+    --card: 217 33% 17%;
+    --card-foreground: 210 40% 96%;
+    
+    /* Popover */
+    --popover: 217 33% 17%;
+    --popover-foreground: 210 40% 96%;
+    
+    /* Secondary */
+    --secondary: 217 33% 22%;
+    --secondary-foreground: 210 40% 96%;
+    
+    /* Muted surfaces */
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 16% 62%;
+    
+    /* Input and Ring */
+    --input: 217 33% 27%;
+    --ring: 229 100% 68%;
+    
+    /* Sidebar - Dark theme */
+    --sidebar-background: 217 33% 17%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 229 100% 68%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 217 33% 22%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 217 33% 27%;
+    --sidebar-ring: 229 100% 68%;
+    
+    /* Header - Dark */
+    --header-background: 217 33% 17%;
+    --header-foreground: 210 40% 96%;
+    
+    /* Footer - Dark */
+    --footer-background: 222 47% 8%;
+    --footer-foreground: 215 16% 62%;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
   }
 
   body {

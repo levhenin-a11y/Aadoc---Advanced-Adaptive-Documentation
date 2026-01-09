@@ -1,115 +1,148 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import logo from "@/assets/logo.png";
+import { Separator } from "@/components/ui/separator";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login attempt:", { username, rememberMe });
+    console.log("Tentative de connexion:", { username, rememberMe });
+    // Redirect to home page after login
+    navigate("/");
   };
 
+  const currentYear = new Date().getFullYear();
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
-      <div className="w-full max-w-4xl flex flex-col md:flex-row rounded-xl overflow-hidden shadow-2xl">
-        {/* Image Section */}
-        <div className="md:w-1/2">
-          <img
-            src={logo}
-            alt="Modern architecture"
-            className="w-full h-48 md:h-full object-cover"
-          />
-        </div>
+    <div className="min-h-screen flex flex-col bg-background">
+      {/* Main Content */}
+      <div className="flex-1 flex items-center justify-center p-4">
+        <div className="w-full max-w-4xl flex flex-col md:flex-row rounded-xl overflow-hidden shadow-2xl">
+          {/* Image Section - Architectural Image */}
+          <div className="md:w-1/2 bg-surface-tertiary">
+            <img
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80"
+              alt="Architecture moderne de bureaux avec façade en verre"
+              className="w-full h-48 md:h-full object-cover"
+            />
+          </div>
 
-        {/* Form Section */}
-        <div className="md:w-1/2 bg-muted p-6 md:p-8 flex flex-col justify-center">
-          <CardHeader className="text-center p-0 mb-6">
-            <CardTitle className="text-2xl md:text-3xl font-bold text-foreground">
-              Log in
-            </CardTitle>
-          </CardHeader>
+          {/* Form Section */}
+          <div className="md:w-1/2 bg-muted p-6 md:p-8 flex flex-col justify-center">
+            <CardHeader className="text-center p-0 mb-6">
+              <CardTitle className="text-2xl md:text-3xl font-bold text-foreground font-serif">
+                Connexion
+              </CardTitle>
+            </CardHeader>
 
-          <Card className="border-0 shadow-none bg-transparent">
-            <form onSubmit={handleSubmit}>
-              <CardContent className="space-y-4 p-0">
-                <div className="space-y-2">
-                  <Label htmlFor="username" className="text-foreground">
-                    Username <span className="text-destructive">*</span>
-                  </Label>
-                  <Input
-                    id="username"
-                    type="text"
-                    placeholder="Enter your Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    className="bg-card border-border"
-                    required
-                  />
-                </div>
+            <Card className="border-0 shadow-none bg-transparent">
+              <form onSubmit={handleSubmit}>
+                <CardContent className="space-y-4 p-0">
+                  <div className="space-y-2">
+                    <Label htmlFor="username" className="text-foreground">
+                      Nom d'utilisateur <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id="username"
+                      type="text"
+                      placeholder="Entrez votre nom d'utilisateur"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      className="bg-card border-border focus:ring-2 focus:ring-ring"
+                      required
+                      aria-required="true"
+                    />
+                  </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="password" className="text-foreground">
-                    Password <span className="text-destructive">*</span>
-                  </Label>
-                  <Input
-                    id="password"
-                    type="password"
-                    placeholder="Enter your Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="bg-card border-border"
-                    required
-                  />
-                </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="password" className="text-foreground">
+                      Mot de passe <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id="password"
+                      type="password"
+                      placeholder="Entrez votre mot de passe"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="bg-card border-border focus:ring-2 focus:ring-ring"
+                      required
+                      aria-required="true"
+                    />
+                  </div>
 
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="remember"
-                    checked={rememberMe}
-                    onCheckedChange={(checked) => setRememberMe(checked as boolean)}
-                  />
-                  <Label 
-                    htmlFor="remember" 
-                    className="text-sm font-normal text-foreground cursor-pointer"
+                  <div className="flex items-center space-x-2">
+                    <Checkbox
+                      id="remember"
+                      checked={rememberMe}
+                      onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+                    />
+                    <Label 
+                      htmlFor="remember" 
+                      className="text-sm font-normal text-foreground cursor-pointer"
+                    >
+                      Se souvenir de moi
+                    </Label>
+                  </div>
+
+                  <Button
+                    type="submit"
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-2 focus:ring-ring focus:ring-offset-2"
                   >
-                    Remember me
-                  </Label>
-                </div>
+                    Connexion
+                  </Button>
+                </CardContent>
 
-                <Button
-                  type="submit"
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-                >
-                  Login
-                </Button>
-              </CardContent>
-
-              <CardFooter className="flex flex-col gap-2 p-0 mt-6">
-                <Link 
-                  to="/forgot-password" 
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Forgot password?
-                </Link>
-                <Link 
-                  to="/register" 
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Don't have an account?
-                </Link>
-              </CardFooter>
-            </form>
-          </Card>
+                <CardFooter className="flex flex-col gap-2 p-0 mt-6">
+                  <Link 
+                    to="/forgot-password" 
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded"
+                  >
+                    Mot de passe oublié ?
+                  </Link>
+                  <Link 
+                    to="/register" 
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded"
+                  >
+                    Pas encore de compte ?
+                  </Link>
+                </CardFooter>
+              </form>
+            </Card>
+          </div>
         </div>
       </div>
+
+      {/* Login Page Footer */}
+      <footer className="bg-footer text-footer-foreground py-4 px-6">
+        <nav aria-label="Liens légaux" className="flex flex-wrap items-center justify-center gap-2 text-sm">
+          <span>Copyright © {currentYear}</span>
+          <Separator orientation="vertical" className="h-4 bg-footer-foreground/30" />
+          <span>Version 1.0.0</span>
+          <Separator orientation="vertical" className="h-4 bg-footer-foreground/30" />
+          <a 
+            href="#contact" 
+            className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded"
+          >
+            Contact
+          </a>
+          <Separator orientation="vertical" className="h-4 bg-footer-foreground/30" />
+          <a 
+            href="#disclaimer" 
+            className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded"
+          >
+            Disclaimer
+          </a>
+        </nav>
+      </footer>
     </div>
   );
 };
