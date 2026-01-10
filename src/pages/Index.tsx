@@ -1,4 +1,4 @@
-import { Eye, Upload } from "lucide-react";
+import { Eye, Network, Upload } from "lucide-react";
 import MainLayout from "@/components/layout/MainLayout";
 import ActionCard from "@/components/cards/ActionCard";
 
@@ -13,7 +13,7 @@ const Index = () => {
       </div>
 
       {/* Action Cards */}
-      <section className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+      <section className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
         {/* Consult Card */}
         <ActionCard
           title="CONSULT"
@@ -32,6 +32,16 @@ const Index = () => {
           permissionLabel="You must be USER"
           permissionType="user"
           onAction={() => console.log("Navigate to upload")}
+        />
+
+        {/* Assign Card */}
+        <ActionCard
+          title="ASSIGN"
+          description="Assign documents to users for review."
+          icon={<Network className="h-8 w-8 text-primary-foreground" />}
+          permissionLabel="You must be EDITOR"
+          permissionType="editor"
+          onAction={() => console.log("Navigate to assign")}
         />
       </section>
     </MainLayout>
