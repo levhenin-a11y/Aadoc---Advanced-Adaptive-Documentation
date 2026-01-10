@@ -22,7 +22,7 @@ interface ActionCardProps {
 const permissionColors = {
   reader: "text-warning",
   user: "text-warning",
-  admin: "text-destructive",
+  admin: "text-warning",
 };
 
 const ActionCard = ({
