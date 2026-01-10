@@ -6,34 +6,28 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Tentative de connexion:", { username, rememberMe });
+    console.log("Tentative de connexion:", {
+      username,
+      rememberMe
+    });
     // Redirect to home page after login
     navigate("/");
   };
-
   const currentYear = new Date().getFullYear();
-
-  return (
-    <div className="min-h-screen flex flex-col bg-background">
+  return <div className="min-h-screen flex flex-col bg-background">
       {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center p-4">
+      <div className="flex-1 flex items-center justify-center p-4 bg-primary">
         <div className="w-full max-w-4xl flex flex-col md:flex-row rounded-xl overflow-hidden shadow-2xl">
           {/* Image Section - Architectural Image */}
           <div className="md:w-1/2 bg-surface-tertiary">
-            <img
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80"
-              alt="Architecture moderne de bureaux avec façade en verre"
-              className="w-full h-48 md:h-full object-cover"
-            />
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Architecture moderne de bureaux avec façade en verre" className="w-full h-48 md:h-full object-cover" />
           </div>
 
           {/* Form Section */}
@@ -51,67 +45,33 @@ const Login = () => {
                     <Label htmlFor="username" className="text-foreground">
                       Nom d'utilisateur <span className="text-destructive">*</span>
                     </Label>
-                    <Input
-                      id="username"
-                      type="text"
-                      placeholder="Entrez votre nom d'utilisateur"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      className="bg-card border-border focus:ring-2 focus:ring-ring"
-                      required
-                      aria-required="true"
-                    />
+                    <Input id="username" type="text" placeholder="Entrez votre nom d'utilisateur" value={username} onChange={e => setUsername(e.target.value)} className="bg-card border-border focus:ring-2 focus:ring-ring" required aria-required="true" />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="password" className="text-foreground">
                       Mot de passe <span className="text-destructive">*</span>
                     </Label>
-                    <Input
-                      id="password"
-                      type="password"
-                      placeholder="Entrez votre mot de passe"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className="bg-card border-border focus:ring-2 focus:ring-ring"
-                      required
-                      aria-required="true"
-                    />
+                    <Input id="password" type="password" placeholder="Entrez votre mot de passe" value={password} onChange={e => setPassword(e.target.value)} className="bg-card border-border focus:ring-2 focus:ring-ring" required aria-required="true" />
                   </div>
 
                   <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="remember"
-                      checked={rememberMe}
-                      onCheckedChange={(checked) => setRememberMe(checked as boolean)}
-                    />
-                    <Label 
-                      htmlFor="remember" 
-                      className="text-sm font-normal text-foreground cursor-pointer"
-                    >
+                    <Checkbox id="remember" checked={rememberMe} onCheckedChange={checked => setRememberMe(checked as boolean)} />
+                    <Label htmlFor="remember" className="text-sm font-normal text-foreground cursor-pointer">
                       Se souvenir de moi
                     </Label>
                   </div>
 
-                  <Button
-                    type="submit"
-                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-2 focus:ring-ring focus:ring-offset-2"
-                  >
+                  <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-2 focus:ring-ring focus:ring-offset-2">
                     Connexion
                   </Button>
                 </CardContent>
 
                 <CardFooter className="flex flex-col gap-2 p-0 mt-6">
-                  <Link 
-                    to="/forgot-password" 
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded"
-                  >
+                  <Link to="/forgot-password" className="text-sm text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded">
                     Mot de passe oublié ?
                   </Link>
-                  <Link 
-                    to="/register" 
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded"
-                  >
+                  <Link to="/register" className="text-sm text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded">
                     Pas encore de compte ?
                   </Link>
                 </CardFooter>
@@ -128,23 +88,15 @@ const Login = () => {
           <Separator orientation="vertical" className="h-4 bg-footer-foreground/30" />
           <span>Version 1.0.0</span>
           <Separator orientation="vertical" className="h-4 bg-footer-foreground/30" />
-          <a 
-            href="#contact" 
-            className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded"
-          >
+          <a href="#contact" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded">
             Contact
           </a>
           <Separator orientation="vertical" className="h-4 bg-footer-foreground/30" />
-          <a 
-            href="#disclaimer" 
-            className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded"
-          >
+          <a href="#disclaimer" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded">
             Disclaimer
           </a>
         </nav>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Login;
