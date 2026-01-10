@@ -14,7 +14,7 @@ interface ActionCardProps {
   description: string;
   icon: ReactNode;
   permissionLabel: string;
-  permissionType: "reader" | "user" | "admin";
+  permissionType: "reader" | "user" | "editor";
   onAction: () => void;
   className?: string;
 }
@@ -22,7 +22,7 @@ interface ActionCardProps {
 const permissionColors = {
   reader: "text-warning",
   user: "text-warning",
-  admin: "text-warning",
+  editor: "text-warning",
 };
 
 const ActionCard = ({
