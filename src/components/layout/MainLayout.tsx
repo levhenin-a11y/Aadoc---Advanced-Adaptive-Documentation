@@ -17,8 +17,8 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       <div className="flex flex-1">
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(!sidebarOpen)} />
         
-        <main className="flex-1 bg-primary overflow-auto">
-          <div className="p-4 md:p-6 lg:p-8">
+        <main className="flex-1 bg-primary overflow-auto flex flex-col">
+          <div className="p-4 md:p-6 lg:p-8 flex-1 flex flex-col">
             {children}
           </div>
         </main>
