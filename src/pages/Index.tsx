@@ -13,35 +13,38 @@ const Index = () => {
       </div>
 
       {/* Action Cards */}
-      <section className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
+      <section className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto flex-1">
         {/* Consult Card */}
         <ActionCard
           title="CONSULT"
           description="Search the database and consult documents."
-          icon={<Eye className="h-8 w-8 text-primary-foreground" />}
+          icon={<Eye className="h-10 w-10 text-primary-foreground" />}
           permissionLabel="You must be READER"
           permissionType="reader"
           onAction={() => console.log("Navigate to consult")}
+          className="h-full"
         />
 
         {/* Upload Card */}
         <ActionCard
           title="UPLOAD"
           description="Upload document and create the entry in the database."
-          icon={<Upload className="h-8 w-8 text-primary-foreground" />}
+          icon={<Upload className="h-10 w-10 text-primary-foreground" />}
           permissionLabel="You must be USER"
           permissionType="user"
           onAction={() => console.log("Navigate to upload")}
+          className="h-full"
         />
 
         {/* Assign Card */}
         <ActionCard
           title="ASSIGN"
           description="Assign documents to users for review."
-          icon={<Network className="h-8 w-8 text-primary-foreground" />}
+          icon={<Network className="h-10 w-10 text-primary-foreground" />}
           permissionLabel="You must be EDITOR"
           permissionType="editor"
           onAction={() => console.log("Navigate to assign")}
+          className="h-full"
         />
       </section>
     </MainLayout>
