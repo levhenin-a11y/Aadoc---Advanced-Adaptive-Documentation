@@ -53,6 +53,37 @@ const Header = ({ onMenuToggle, username = "heninvu" }: HeaderProps) => {
           </span>
         </div>
 
+        {/* Desktop Navigation */}
+        <nav className="hidden md:block" aria-label="Navigation principale">
+          <ul className="flex items-center gap-6">
+            <li>
+              <a href="/" className="text-sm text-header-foreground hover:text-header-foreground/80 transition-colors">
+                Accueil
+              </a>
+            </li>
+            <li>
+              <a href="/documents" className="text-sm text-header-foreground hover:text-header-foreground/80 transition-colors">
+                Documents
+              </a>
+            </li>
+            <li>
+              <a href="/projets" className="text-sm text-header-foreground hover:text-header-foreground/80 transition-colors">
+                Projets
+              </a>
+            </li>
+            <li>
+              <a href="/equipe" className="text-sm text-header-foreground hover:text-header-foreground/80 transition-colors">
+                Équipe
+              </a>
+            </li>
+            <li>
+              <a href="/aide" className="text-sm text-header-foreground hover:text-header-foreground/80 transition-colors">
+                Aide
+              </a>
+            </li>
+          </ul>
+        </nav>
+
         {/* User info and Dark mode toggle */}
         <div className="flex items-center gap-3">
           {/* Dark mode toggle */}
@@ -76,10 +107,10 @@ const Header = ({ onMenuToggle, username = "heninvu" }: HeaderProps) => {
         </div>
       </div>
 
-      {/* Navigation bar with menu toggle */}
+      {/* Mobile Navigation bar with menu toggle */}
       <nav 
-        className="bg-header/90 border-t border-header-foreground/10"
-        aria-label="Navigation principale"
+        className="md:hidden bg-header/90 border-t border-header-foreground/10"
+        aria-label="Navigation mobile"
       >
         <div className="flex items-center justify-center px-4 py-2">
           <Button 
