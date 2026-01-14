@@ -35,21 +35,21 @@ const ActionCard = ({
   className,
 }: ActionCardProps) => {
   return (
-    <Card className={cn("bg-card shadow-lg hover:shadow-xl transition-shadow", className)}>
-      <CardHeader className="text-center pb-2">
+    <Card className={cn("bg-card shadow-lg hover:shadow-xl transition-shadow min-h-[360px] flex flex-col", className)}>
+      <CardHeader className="text-center pb-4 pt-8">
         <h3 className="text-2xl font-bold tracking-wide text-foreground">{title}</h3>
       </CardHeader>
       
-      <CardContent className="flex flex-col items-center gap-4 px-8">
-        <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
+      <CardContent className="flex flex-col items-center gap-6 px-8 flex-1">
+        <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center">
           {icon}
         </div>
         
-        <p className="text-center text-muted-foreground text-sm">
+        <p className="text-center text-muted-foreground text-sm leading-relaxed">
           {description}
         </p>
         
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 mt-auto">
           <span className={cn("text-sm font-medium", permissionColors[permissionType])}>
             {permissionLabel}
           </span>
@@ -66,7 +66,7 @@ const ActionCard = ({
         </div>
       </CardContent>
       
-      <CardFooter className="justify-center pb-6 pt-2">
+      <CardFooter className="justify-center pb-8 pt-4">
         <Button 
           onClick={onAction}
           className="w-40 bg-primary text-primary-foreground hover:bg-primary/90"
