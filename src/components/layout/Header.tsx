@@ -54,7 +54,7 @@ const Header = ({ onMenuToggle, username = "heninvu" }: HeaderProps) => {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:block" aria-label="Navigation principale">
+        <nav className="hidden lg:block" aria-label="Navigation principale">
           <ul className="flex items-center gap-6">
             <li>
               <a href="/" className="text-sm text-header-foreground hover:text-header-foreground/80 transition-colors">
@@ -107,9 +107,9 @@ const Header = ({ onMenuToggle, username = "heninvu" }: HeaderProps) => {
         </div>
       </div>
 
-      {/* Mobile Navigation bar with menu toggle */}
+      {/* Mobile/Tablet Navigation bar with menu toggle */}
       <nav 
-        className="md:hidden bg-header/90 border-t border-header-foreground/10"
+        className="lg:hidden bg-header/90 border-t border-header-foreground/10"
         aria-label="Navigation mobile"
       >
         <div className="flex items-center justify-center px-4 py-2">
