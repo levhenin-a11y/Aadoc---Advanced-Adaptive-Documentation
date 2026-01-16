@@ -49,7 +49,7 @@ const Header = ({ onMenuToggle, username = "heninvu" }: HeaderProps) => {
             <p className="text-xs opacity-80">Adapted Advanced Documentation</p>
           </div>
           <span className="sm:hidden text-lg font-bold font-serif">
-            Aadoc <span className="text-xs/6 font-normal opacity-80"><br/>Adapted Advanced Documentation</span>
+            Aadoc <span className="text-xs/3 font-normal opacity-80"><br/>Adapted Advanced Documentation</span>
           </span>
         </div>
 
