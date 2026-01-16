@@ -44,13 +44,13 @@ const Header = ({ onMenuToggle, username = "heninvu" }: HeaderProps) => {
             alt="Logo Aadoc - Retour à l'accueil" 
             className="h-12 w-12 rounded object-cover"
           />
-          <div className="hidden sm:block">
+          <div>
             <h1 className="text-lg font-bold font-serif">Aadoc</h1>
-            <p className="text-xs opacity-80">Adapted Advanced Documentation</p>
+            <p className="hidden sm:block text-xs opacity-80">Adapted Advanced Documentation</p>
           </div>
-          <span className="sm:hidden text-lg font-bold font-serif">
-            Aadoc <span className="text-xs/3 font-normal opacity-80"><br/>Adapted Advanced Documentation</span>
-          </span>
+          {/* <span className="sm:hidden text-lg font-bold font-serif">
+            Aadoc <span className="text-xs font-normal opacity-80"><br/>Adapted Advanced Documentation</span>
+          </span> */}
         </div>
 
         {/* Desktop Navigation */}
