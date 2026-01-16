@@ -87,14 +87,6 @@ const Header = ({ onMenuToggle, username = "heninvu" }: HeaderProps) => {
         {/* User info and Dark mode toggle */}
         <div className="flex items-center gap-3">
 
-          <span className="text-sm hidden sm:inline">USER / {username}</span>
-          <Avatar className="h-8 w-8 border-2 border-header-foreground/20">
-            <AvatarImage src="" alt={`Avatar de ${username}`} />
-            <AvatarFallback className="bg-primary-foreground text-primary text-xs">
-              {username.slice(0, 2).toUpperCase()}
-            </AvatarFallback>
-          </Avatar>
-
           {/* Dark mode toggle */}
           <Button
             variant="ghost"
@@ -105,6 +97,15 @@ const Header = ({ onMenuToggle, username = "heninvu" }: HeaderProps) => {
           >
             {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
+
+          <span className="text-sm hidden sm:inline">USER / {username}</span>
+          <Avatar className="h-8 w-8 border-2 border-header-foreground/20">
+            <AvatarImage src="" alt={`Avatar de ${username}`} />
+            <AvatarFallback className="bg-primary-foreground text-primary text-xs">
+              {username.slice(0, 2).toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+
         </div>
       </div>
 
