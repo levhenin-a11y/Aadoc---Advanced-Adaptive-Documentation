@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
+import { cn } from "@/lib/utils";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -17,7 +18,10 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       <div className="flex flex-1 relative">
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(!sidebarOpen)} />
         
-        <main className="flex-1 bg-primary overflow-auto flex flex-col pl-12 lg:pl-16 transition-[padding] duration-300">
+        <main className={cn(
+          "flex-1 bg-primary overflow-auto flex flex-col transition-[padding] duration-300",
+          sidebarOpen ? "pl-64" : "pl-12 lg:pl-16"
+        )}>
           <div className="p-4 md:p-6 lg:p-8 flex-1 flex flex-col">
             {children}
           </div>
