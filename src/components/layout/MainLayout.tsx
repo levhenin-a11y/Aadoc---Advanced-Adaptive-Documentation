@@ -12,7 +12,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
+      <Header />
       
       <div className="flex flex-1">
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(!sidebarOpen)} />
