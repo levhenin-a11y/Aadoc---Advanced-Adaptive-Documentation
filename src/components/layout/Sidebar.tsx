@@ -17,69 +17,57 @@ const menuItems = [
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   return (
-    <>
-      {/* Overlay for mobile */}
-      {isOpen && (
-        <div 
-          className="fixed inset-0 bg-foreground/50 z-40 lg:hidden"
-          onClick={onClose}
-          aria-hidden="true"
-        />
+    <aside
+      className={cn(
+        "relative z-40 h-full bg-sidebar text-sidebar-foreground transition-all duration-300",
+        isOpen ? "w-64" : "w-16"
       )}
-      
-      {/* Sidebar */}
-      <aside
-        className={cn(
-          "fixed lg:relative z-50 h-full bg-sidebar text-sidebar-foreground transition-all duration-300",
-          isOpen ? "w-64 translate-x-0" : "w-0 -translate-x-full lg:w-16 lg:translate-x-0"
-        )}
-        role="navigation"
-        aria-label="Menu latéral de navigation"
-      >
-        <div className="flex flex-col h-full overflow-hidden">
-          {/* Toggle button (desktop only) */}
-          <div className="hidden lg:flex justify-end p-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={onClose}
-              className="text-sidebar-foreground hover:bg-sidebar-accent focus:ring-2 focus:ring-sidebar-ring"
-              aria-label={isOpen ? "Réduire le menu" : "Étendre le menu"}
-            >
-              <ChevronRight className={cn(
-                "h-5 w-5 transition-transform",
-                isOpen && "rotate-180"
-              )} />
-            </Button>
-          </div>
-
-          {/* Menu items */}
-          <nav className="flex-1 px-2 py-4 space-y-1" aria-label="Navigation principale">
-            {menuItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className={cn(
-                  "flex items-center gap-3 px-3 py-3 rounded-lg transition-colors",
-                  "hover:bg-sidebar-accent text-sidebar-foreground",
-                  "focus:outline-none focus:ring-2 focus:ring-sidebar-ring",
-                  !isOpen && "lg:justify-center lg:px-2"
-                )}
-                aria-label={!isOpen ? item.label : undefined}
-              >
-                <item.icon className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
-                <span className={cn(
-                  "whitespace-nowrap transition-opacity",
-                  !isOpen && "lg:hidden"
-                )}>
-                  {item.label}
-                </span>
-              </a>
-            ))}
-          </nav>
+      role="navigation"
+      aria-label="Menu latéral de navigation"
+    >
+      <div className="flex flex-col h-full overflow-hidden">
+        {/* Toggle button - visible on all screen sizes */}
+        <div className="flex justify-end p-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onClose}
+            className="text-sidebar-foreground hover:bg-sidebar-accent focus:ring-2 focus:ring-sidebar-ring"
+            aria-label={isOpen ? "Réduire le menu" : "Étendre le menu"}
+          >
+            <ChevronRight className={cn(
+              "h-5 w-5 transition-transform",
+              isOpen && "rotate-180"
+            )} />
+          </Button>
         </div>
-      </aside>
-    </>
+
+        {/* Menu items */}
+        <nav className="flex-1 px-2 py-4 space-y-1" aria-label="Navigation principale">
+          {menuItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className={cn(
+                "flex items-center gap-3 px-3 py-3 rounded-lg transition-colors",
+                "hover:bg-sidebar-accent text-sidebar-foreground",
+                "focus:outline-none focus:ring-2 focus:ring-sidebar-ring",
+                !isOpen && "justify-center px-2"
+              )}
+              aria-label={!isOpen ? item.label : undefined}
+            >
+              <item.icon className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
+              <span className={cn(
+                "whitespace-nowrap transition-opacity",
+                !isOpen && "hidden"
+              )}>
+                {item.label}
+              </span>
+            </a>
+          ))}
+        </nav>
+      </div>
+    </aside>
   );
 };
 
