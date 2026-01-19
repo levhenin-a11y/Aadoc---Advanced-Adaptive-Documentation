@@ -14,7 +14,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     <div className="flex flex-col min-h-screen">
       <Header />
       
-      <div className="flex flex-1">
+      <div className="flex flex-1 relative">
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(!sidebarOpen)} />
         
         <main className="flex-1 bg-primary overflow-auto flex flex-col">
