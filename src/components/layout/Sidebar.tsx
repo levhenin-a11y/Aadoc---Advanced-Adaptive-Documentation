@@ -20,7 +20,9 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     <aside
       className={cn(
         "absolute left-0 top-0 z-50 h-full bg-sidebar text-sidebar-foreground transition-all duration-300",
-        isOpen ? "w-64" : "w-16"
+        // On sm/md: only show toggle width when collapsed, full width when open
+        // On lg: show icon bar when collapsed, full width when open
+        isOpen ? "w-64" : "w-12 lg:w-16"
       )}
       role="navigation"
       aria-label="Menu latéral de navigation"
@@ -42,8 +44,15 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           </Button>
         </div>
 
-        {/* Menu items */}
-        <nav className="flex-1 px-2 py-4 space-y-1" aria-label="Navigation principale">
+        {/* Menu items - hidden on sm/md when collapsed, always visible on lg */}
+        <nav 
+          className={cn(
+            "flex-1 px-2 py-4 space-y-1",
+            // On sm/md: hide menu items when collapsed
+            !isOpen && "hidden lg:block"
+          )} 
+          aria-label="Navigation principale"
+        >
           {menuItems.map((item) => (
             <a
               key={item.label}
