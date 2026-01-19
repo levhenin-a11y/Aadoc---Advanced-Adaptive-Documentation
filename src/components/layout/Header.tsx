@@ -35,17 +35,17 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
   };
 
   const navLinks = [
-    { label: "Accueil", href: "/" },
-    { label: "Documents", href: "/documents" },
-    { label: "Projets", href: "/projets" },
-    { label: "Équipe", href: "/equipe" },
-    { label: "Aide", href: "/aide" },
+    { label: "Account", href: "/login" },
+    { label: "Documentation", href: "/documentation" },
+    { label: "Preferences", href: "/preferences" },
+    { label: "Support", href: "support" },
+    { label: "Delegations", href: "/delegations" },
   ];
 
   return (
     <>
       <header className="bg-header text-header-foreground" role="banner">
-        <div className="flex items-center justify-between px-4 py-3">
+        <div className="flex items-center gap-3 px-4 py-3">
           {/* Logo and Brand */}
           <div className="flex items-center gap-3">
             <img 
@@ -60,7 +60,7 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
           </div>
 
           {/* Desktop/Tablet Navigation - visible on md and lg */}
-          <nav className="hidden md:block" aria-label="Navigation principale">
+          <nav className="hidden md:block ml-auto" aria-label="Navigation principale">
             <ul className="flex items-center gap-6">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -75,6 +75,9 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
             </ul>
           </nav>
 
+          {/* Separator */}
+          <div className="hidden md:block h-6 w-0.5 bg-header-foreground/50" />
+
           {/* User info and Dark mode toggle */}
           <div className="flex items-center gap-3">
             {/* Dark mode toggle */}
@@ -88,6 +91,9 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
               {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
 
+            {/* Separator */}
+          <div className="hidden md:block h-6 w-0.5 bg-header-foreground/50" />
+
             <span className="text-sm hidden sm:inline">USER / {username}</span>
             <Avatar className="h-8 w-8 border-2 border-header-foreground/20">
               <AvatarImage src="" alt={`Avatar de ${username}`} />
@@ -97,6 +103,7 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
             </Avatar>
           </div>
         </div>
+
 
         {/* Mobile Navigation bar with menu toggle - visible only on sm */}
         <nav 
