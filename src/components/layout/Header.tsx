@@ -112,7 +112,7 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
               aria-label="Ouvrir le menu de navigation"
               aria-expanded={isMenuOpen}
             >
-              <Menu className="h-6 w-6" />
+              <Menu className="h-16 w-16" />
               <span className="sr-only">Menu</span>
             </Button>
           </div>
