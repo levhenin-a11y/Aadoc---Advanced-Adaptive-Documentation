@@ -19,7 +19,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   return (
     <aside
       className={cn(
-        "relative z-40 h-full bg-sidebar text-sidebar-foreground transition-all duration-300",
+        "absolute left-0 top-0 z-50 h-full bg-sidebar text-sidebar-foreground transition-all duration-300",
         isOpen ? "w-64" : "w-16"
       )}
       role="navigation"
