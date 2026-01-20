@@ -12,11 +12,11 @@ export default {
         "2xl": "1400px",
       },
     },
-    screens: {
-      // Custom breakpoint for header navigation
-      'nav': '830px',
-    },
     extend: {
+      screens: {
+        // Custom breakpoint for header navigation
+        'nav': '830px',
+      },
       fontFamily: {
         sans: ["Roboto", "system-ui", "sans-serif"],
         serif: ["Merriweather", "Georgia", "serif"],
