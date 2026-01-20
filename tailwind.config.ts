@@ -12,6 +12,10 @@ export default {
         "2xl": "1400px",
       },
     },
+    screens: {
+      // Custom breakpoint for header navigation
+      'nav': '830px',
+    },
     extend: {
       fontFamily: {
         sans: ["Roboto", "system-ui", "sans-serif"],
