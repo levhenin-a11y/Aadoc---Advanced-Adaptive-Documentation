@@ -79,7 +79,7 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
           <div className="hidden md:block h-6 w-0.5 bg-header-foreground/50" />
 
           {/* User info and Dark mode toggle */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 ml-auto">
             {/* Dark mode toggle */}
             <Button
               variant="ghost"
