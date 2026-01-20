@@ -59,8 +59,8 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
             </div>
           </div>
 
-          {/* Desktop/Tablet Navigation - visible on md and lg */}
-          <nav className="hidden md:flex md:flex-1 md:justify-center" aria-label="Navigation principale">
+          {/* Desktop/Tablet Navigation - visible on nav (830px) and up */}
+          <nav className="hidden nav:flex nav:flex-1 nav:justify-center" aria-label="Navigation principale">
             <ul className="flex items-center gap-6">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -76,7 +76,7 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
           </nav>
 
           {/* Separator */}
-          <div className="hidden md:block h-6 w-0.5 bg-header-foreground/50" />
+          <div className="hidden nav:block h-6 w-0.5 bg-header-foreground/50" />
 
           {/* User info and Dark mode toggle */}
           <div className="flex items-center gap-3 ml-auto">
@@ -92,7 +92,7 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
             </Button>
 
             {/* Separator */}
-          <div className="hidden md:block h-6 w-0.5 bg-header-foreground/50" />
+          <div className="hidden nav:block h-6 w-0.5 bg-header-foreground/50" />
 
             <span className="text-sm hidden sm:inline">USER / {username}</span>
             <Avatar className="h-8 w-8 border-2 border-header-foreground/20">
@@ -105,9 +105,9 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
         </div>
 
 
-        {/* Mobile Navigation bar with menu toggle - visible only on sm */}
+        {/* Mobile Navigation bar with menu toggle - visible below nav (830px) */}
         <nav 
-          className="md:hidden bg-header/90 border-t border-header-foreground/10"
+          className="nav:hidden bg-header/90 border-t border-header-foreground/10"
           aria-label="Navigation mobile"
         >
           <div className="flex items-center justify-center px-4 py-2">
@@ -126,10 +126,10 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
         </nav>
       </header>
 
-      {/* Mobile Menu Overlay - fullscreen on sm */}
+      {/* Mobile Menu Overlay - fullscreen on sm, z-[60] to appear above sidebar (z-50) */}
       {isMenuOpen && (
         <div 
-          className="fixed inset-0 z-50 bg-header text-header-foreground flex flex-col animate-fade-in md:hidden"
+          className="fixed inset-0 z-[60] bg-header text-header-foreground flex flex-col animate-fade-in nav:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Menu de navigation"
