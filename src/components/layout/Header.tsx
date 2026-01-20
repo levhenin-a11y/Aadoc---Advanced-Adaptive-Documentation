@@ -60,7 +60,7 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
           </div>
 
           {/* Desktop/Tablet Navigation - visible on md and lg */}
-          <nav className="hidden md:block ml-auto" aria-label="Navigation principale">
+          <nav className="hidden md:flex md:flex-1 md:justify-center" aria-label="Navigation principale">
             <ul className="flex items-center gap-6">
               {navLinks.map((link) => (
                 <li key={link.href}>
