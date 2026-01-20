@@ -2,7 +2,7 @@ import { ChevronRight, ChevronDown, Home, FileSearch, Upload, Users, Settings, D
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-
+import { useLocation } from "react-router-dom";
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
@@ -63,6 +63,8 @@ const menuSections: MenuSection[] = [
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const [expandedSections, setExpandedSections] = useState<string[]>(["Accueil"]);
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   const toggleSection = (label: string) => {
     setExpandedSections((prev) =>
@@ -76,7 +78,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     <aside
       className={cn(
         "absolute left-0 top-0 z-50 h-full bg-sidebar text-sidebar-foreground transition-all duration-300",
-        isOpen ? "w-64" : "w-12 lg:w-16"
+        isOpen ? "w-full sm:w-64" : "w-12 lg:w-16"
       )}
       role="navigation"
       aria-label="Menu latéral de navigation"
@@ -141,20 +143,26 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 {/* Section items */}
                 {isOpen && isSectionExpanded && (
                   <div className="mt-1 ml-4 pl-2 border-l border-sidebar-accent space-y-1">
-                    {section.items.map((item) => (
-                      <a
-                        key={item.href}
-                        href={item.href}
-                        className={cn(
-                          "flex items-center gap-2 px-3 py-2 rounded-lg transition-colors text-sm",
-                          "hover:bg-sidebar-accent text-sidebar-foreground/80 hover:text-sidebar-foreground",
-                          "focus:outline-none focus:ring-2 focus:ring-sidebar-ring"
-                        )}
-                      >
-                        <item.icon className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
-                        <span>{item.label}</span>
-                      </a>
-                    ))}
+                    {section.items.map((item) => {
+                      const isActive = currentPath === item.href;
+                      return (
+                        <a
+                          key={item.href}
+                          href={item.href}
+                          className={cn(
+                            "flex items-center gap-2 px-3 py-2 rounded-lg transition-colors text-sm",
+                            "focus:outline-none focus:ring-2 focus:ring-sidebar-ring",
+                            isActive 
+                              ? "bg-sidebar-primary text-sidebar-primary-foreground font-medium" 
+                              : "hover:bg-sidebar-accent text-sidebar-foreground/80 hover:text-sidebar-foreground"
+                          )}
+                          aria-current={isActive ? "page" : undefined}
+                        >
+                          <item.icon className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
+                          <span>{item.label}</span>
+                        </a>
+                      );
+                    })}
                   </div>
                 )}
               </div>
