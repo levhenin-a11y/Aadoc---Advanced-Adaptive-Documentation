@@ -37,7 +37,7 @@ const ActionCard = ({
   return (
     <Card className={cn("bg-card shadow-lg hover:shadow-xl transition-shadow min-h-[360px] flex flex-col", className)}>
       <CardHeader className="text-center pb-4 pt-8">
-        <h3 className="text-2xl font-bold tracking-wide text-foreground">{title}</h3>
+        <h3 className="text-2xl font-bold tracking-wide text-ink-secondary">{title}</h3>
       </CardHeader>
       
       <CardContent className="flex flex-col items-center gap-6 px-8 flex-1">
