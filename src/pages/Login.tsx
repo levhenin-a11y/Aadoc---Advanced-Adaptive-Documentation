@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import Footer from "@/components/layout/Footer";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +20,6 @@ const Login = () => {
     // Redirect to home page after login
     navigate("/");
   };
-  const currentYear = new Date().getFullYear();
   return <div className="min-h-screen flex flex-col bg-background">
       {/* Main Content */}
       <div className="flex-1 flex items-center justify-center p-4 bg-primary">
@@ -81,22 +80,7 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Login Page Footer */}
-      <footer className="bg-footer text-footer-foreground py-4 px-6">
-        <nav aria-label="Liens légaux" className="flex flex-wrap items-center justify-center gap-2 text-sm">
-          <span>Copyright © {currentYear}</span>
-          <Separator orientation="vertical" className="h-4 bg-footer-foreground/30" />
-          <span>Version 1.0.0</span>
-          <Separator orientation="vertical" className="h-4 bg-footer-foreground/30" />
-          <a href="#contact" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded">
-            Contact
-          </a>
-          <Separator orientation="vertical" className="h-4 bg-footer-foreground/30" />
-          <a href="#disclaimer" className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded">
-            Disclaimer
-          </a>
-        </nav>
-      </footer>
+      <Footer />
     </div>;
 };
 export default Login;
