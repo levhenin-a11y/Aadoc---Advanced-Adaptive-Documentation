@@ -9,147 +9,147 @@
     /* PRD Color Palette - Light Mode */
     
     /* Primary Blue */
-    --primary: 229 68% 55%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 229 68% 55%; /* hsl(229, 68%, 55%) */
+    --primary-foreground: 0 0% 100%; /* hsl(0, 0%, 100%) */
     
     /* Accent Blue (lighter) */
-    --accent: 229 100% 71%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 229 100% 71%; /* hsl(229, 100%, 71%) */
+    --accent-foreground: 0 0% 100%; /* hsl(0, 0%, 100%) */
     
     /* Surfaces */
-    --background: 0 0% 100%;
-    --surface: 0 0% 100%;
-    --surface-secondary: 0 0% 95%;
-    --surface-tertiary: 214 32% 91%;
+    --background: 0 0% 100%; /* hsl(0, 0%, 100%) */
+    --surface: 0 0% 100%; /* hsl(0, 0%, 100%) */
+    --surface-secondary: 0 0% 95%; /* hsl(0, 0%, 95%) */
+    --surface-tertiary: 214 32% 91%; /* hsl(214, 32%, 91%) */
     
     /* Ink/Text */
-    --foreground: 222 47% 11%;
-    --ink: 222 47% 11%;
-    --ink-secondary: 0 0% 42%;
-    --ink-muted: 215 16% 62%;
+    --foreground: 222 47% 11%; /* hsl(222, 47%, 11%) */
+    --ink: 222 47% 11%; /* hsl(222, 47%, 11%) */
+    --ink-secondary: 0 0% 42%; /* hsl(0, 0%, 42%) */
+    --ink-muted: 215 16% 62%; /* hsl(215, 16%, 62%) */
     
     /* Borders */
-    --border: 214 32% 81%;
-    --border-muted: 214 32% 91%;
+    --border: 214 32% 81%; /* hsl(214, 32%, 81%) */
+    --border-muted: 214 32% 91%; /* hsl(214, 32%, 91%) */
     
     /* Card surfaces */
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card: 0 0% 100%; /* hsl(0, 0%, 100%) */
+    --card-foreground: 222 47% 11%; /* hsl(222, 47%, 11%) */
     
     /* Popover */
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover: 0 0% 100%; /* hsl(0, 0%, 100%) */
+    --popover-foreground: 222 47% 11%; /* hsl(222, 47%, 11%) */
     
     /* Secondary */
-    --secondary: 214 32% 91%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 214 32% 91%; /* hsl(214, 32%, 91%) */
+    --secondary-foreground: 222 47% 11%; /* hsl(222, 47%, 11%) */
     
     /* Muted surfaces */
-    --muted: 0 0% 95%;
-    --muted-foreground: 0 0% 42%;
+    --muted: 0 0% 95%; /* hsl(0, 0%, 95%) */
+    --muted-foreground: 0 0% 42%; /* hsl(0, 0%, 42%) */
     
     /* Utility Colors */
-    --success: 160 84% 52%;
-    --success-foreground: 0 0% 100%;
+    --success: 160 84% 52%; /* hsl(160, 84%, 52%) */
+    --success-foreground: 0 0% 100%; /* hsl(0, 0%, 100%) */
     
-    --warning: 43 96% 56%;
-    --warning-foreground: 222 47% 11%;
+    --warning: 43 96% 56%; /* hsl(43, 96%, 56%) */
+    --warning-foreground: 222 47% 11%; /* hsl(222, 47%, 11%) */
     
-    --destructive: 0 84% 71%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 84% 71%; /* hsl(0, 84%, 71%) */
+    --destructive-foreground: 0 0% 100%; /* hsl(0, 0%, 100%) */
     
-    --info: 213 94% 68%;
-    --info-foreground: 0 0% 100%;
+    --info: 213 94% 68%; /* hsl(213, 94%, 68%) */
+    --info-foreground: 0 0% 100%; /* hsl(0, 0%, 100%) */
     
     /* Input and Ring */
-    --input: 214 32% 81%;
-    --ring: 229 68% 55%;
+    --input: 214 32% 81%; /* hsl(214, 32%, 81%) */
+    --ring: 229 68% 55%; /* hsl(229, 68%, 55%) */
     
     --radius: 0.5rem;
     
     /* Sidebar - Aadoc blue theme */
-    --sidebar-background: 229 68% 55%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 0 0% 100%;
-    --sidebar-primary-foreground: 229 68% 55%;
-    --sidebar-accent: 229 68% 45%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 229 50% 65%;
-    --sidebar-ring: 0 0% 100%;
+    --sidebar-background: 229 68% 55%; /* hsl(229, 68%, 55%) */
+    --sidebar-foreground: 0 0% 100%; /* hsl(0, 0%, 100%) */
+    --sidebar-primary: 0 0% 100%; /* hsl(0, 0%, 100%) */
+    --sidebar-primary-foreground: 229 68% 55%; /* hsl(229, 68%, 55%) */
+    --sidebar-accent: 229 68% 45%; /* hsl(229, 68%, 45%) */
+    --sidebar-accent-foreground: 0 0% 100%; /* hsl(0, 0%, 100%) */
+    --sidebar-border: 229 50% 65%; /* hsl(229, 50%, 65%) */
+    --sidebar-ring: 0 0% 100%; /* hsl(0, 0%, 100%) */
     
     /* Header */
-    --header-background: 229 68% 55%;
-    --header-foreground: 0 0% 100%;
+    --header-background: 229 68% 55%; /* hsl(229, 68%, 55%) */
+    --header-foreground: 0 0% 100%; /* hsl(0, 0%, 100%) */
     
     /* Footer */
-    --footer-background: 222 47% 11%;
-    --footer-foreground: 214 32% 81%;
+    --footer-background: 222 47% 11%; /* hsl(222, 47%, 11%) */
+    --footer-foreground: 214 32% 81%; /* hsl(214, 32%, 81%) */
   }
   
   .dark {
     /* PRD Color Palette - Dark Mode */
     
     /* Primary Blue (lighter for dark mode) */
-    --primary: 229 100% 68%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 229 100% 68%; /* hsl(229, 100%, 68%) */
+    --primary-foreground: 222 47% 11%; /* hsl(222, 47%, 11%) */
     
     /* Accent Blue */
-    --accent: 229 100% 75%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 229 100% 75%; /* hsl(229, 100%, 75%) */
+    --accent-foreground: 222 47% 11%; /* hsl(222, 47%, 11%) */
     
     /* Surfaces (dark) */
-    --background: 222 47% 11%;
-    --surface: 222 47% 11%;
-    --surface-secondary: 217 33% 17%;
-    --surface-tertiary: 215 25% 27%;
+    --background: 222 47% 11%; /* hsl(222, 47%, 11%) */
+    --surface: 222 47% 11%; /* hsl(222, 47%, 11%) */
+    --surface-secondary: 217 33% 17%; /* hsl(217, 33%, 17%) */
+    --surface-tertiary: 215 25% 27%; /* hsl(215, 25%, 27%) */
     
     /* Ink/Text (light for dark mode) */
-    --foreground: 210 40% 96%;
-    --ink: 210 40% 96%;
-    --ink-secondary: 215 16% 72%;
-    --ink-muted: 215 16% 52%;
+    --foreground: 210 40% 96%; /* hsl(210, 40%, 96%) */
+    --ink: 210 40% 96%; /* hsl(210, 40%, 96%) */
+    --ink-secondary: 215 16% 72%; /* hsl(215, 16%, 72%) */
+    --ink-muted: 215 16% 52%; /* hsl(215, 16%, 52%) */
     
     /* Borders */
-    --border: 217 33% 27%;
-    --border-muted: 217 33% 22%;
+    --border: 217 33% 27%; /* hsl(217, 33%, 27%) */
+    --border-muted: 217 33% 22%; /* hsl(217, 33%, 22%) */
     
     /* Card surfaces */
-    --card: 217 33% 17%;
-    --card-foreground: 210 40% 96%;
+    --card: 217 33% 17%; /* hsl(217, 33%, 17%) */
+    --card-foreground: 210 40% 96%; /* hsl(210, 40%, 96%) */
     
     /* Popover */
-    --popover: 217 33% 17%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 217 33% 17%; /* hsl(217, 33%, 17%) */
+    --popover-foreground: 210 40% 96%; /* hsl(210, 40%, 96%) */
     
     /* Secondary */
-    --secondary: 217 33% 22%;
-    --secondary-foreground: 210 40% 96%;
+    --secondary: 217 33% 22%; /* hsl(217, 33%, 22%) */
+    --secondary-foreground: 210 40% 96%; /* hsl(210, 40%, 96%) */
     
     /* Muted surfaces */
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 16% 62%;
+    --muted: 217 33% 17%; /* hsl(217, 33%, 17%) */
+    --muted-foreground: 215 16% 62%; /* hsl(215, 16%, 62%) */
     
     /* Input and Ring */
-    --input: 217 33% 27%;
-    --ring: 229 100% 68%;
+    --input: 217 33% 27%; /* hsl(217, 33%, 27%) */
+    --ring: 229 100% 68%; /* hsl(229, 100%, 68%) */
     
     /* Sidebar - Dark theme */
-    --sidebar-background: 217 33% 17%;
-    --sidebar-foreground: 210 40% 96%;
-    --sidebar-primary: 229 100% 68%;
-    --sidebar-primary-foreground: 222 47% 11%;
-    --sidebar-accent: 217 33% 22%;
-    --sidebar-accent-foreground: 210 40% 96%;
-    --sidebar-border: 217 33% 27%;
-    --sidebar-ring: 229 100% 68%;
+    --sidebar-background: 217 33% 17%; /* hsl(217, 33%, 17%) */
+    --sidebar-foreground: 210 40% 96%; /* hsl(210, 40%, 96%) */
+    --sidebar-primary: 229 100% 68%; /* hsl(229, 100%, 68%) */
+    --sidebar-primary-foreground: 222 47% 11%; /* hsl(222, 47%, 11%) */
+    --sidebar-accent: 217 33% 22%; /* hsl(217, 33%, 22%) */
+    --sidebar-accent-foreground: 210 40% 96%; /* hsl(210, 40%, 96%) */
+    --sidebar-border: 217 33% 27%; /* hsl(217, 33%, 27%) */
+    --sidebar-ring: 229 100% 68%; /* hsl(229, 100%, 68%) */
     
     /* Header - Dark */
-    --header-background: 217 33% 17%;
-    --header-foreground: 210 40% 96%;
+    --header-background: 217 33% 17%; /* hsl(217, 33%, 17%) */
+    --header-foreground: 210 40% 96%; /* hsl(210, 40%, 96%) */
     
     /* Footer - Dark */
-    --footer-background: 222 47% 8%;
-    --footer-foreground: 215 16% 62%;
+    --footer-background: 222 47% 8%; /* hsl(222, 47%, 8%) */
+    --footer-foreground: 215 16% 62%; /* hsl(215, 16%, 62%) */
   }
 }
 
