@@ -33,7 +33,7 @@
     --border-muted: 214 32% 91%; /* hsl(214, 32%, 91%) */
     
     /* Card surfaces */
-    --card: 0 0% 100%; /* hsl(0, 0%, 100%) */
+    --card: 130 1% 96%; /* hsl(130, 1%, 96%) */
     --card-foreground: 222 47% 11%; /* hsl(222, 47%, 11%) */
     
     /* Popover */
@@ -52,7 +52,7 @@
     --success: 160 84% 52%; /* hsl(160, 84%, 52%) */
     --success-foreground: 0 0% 100%; /* hsl(0, 0%, 100%) */
     
-    --warning: 43 96% 56%; /* hsl(43, 96%, 56%) */
+    --warning: 20 90% 56%; /* hsl(20, 90%, 50%) */
     --warning-foreground: 222 47% 11%; /* hsl(222, 47%, 11%) */
     
     --destructive: 0 84% 71%; /* hsl(0, 84%, 71%) */
