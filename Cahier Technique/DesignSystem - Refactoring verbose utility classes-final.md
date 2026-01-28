@@ -403,79 +403,9 @@ export function Card({ variant = "default", className, ...props }: CardProps) {
 }
 ````
 
-## 4. GSAP-Friendly Markup (Critical)
+## 4. Migration Strategy
 
-### 4.1 Requirements
-
-- DOM elements must expose **stable semantic class hooks**.
-- GSAP must be able to target elements without parsing Tailwind utility soup.
-- Animations must reference component classes, not inline utilities.
-
-### 4.2 Preferred Output
-
-````html
-<button class="btn btn-primary"></button>
-<div class="card card--hoverable"></div>
-<section class="section"></section>
-<div class="sidebar sidebar--collapsed"></div>
-````
-
-### 4.3 GSAP Implementation Pattern
-
-````ts
-// filepath: src/animations/sidebar.ts
-import gsap from "gsap";
-
-export function animateSidebarToggle(isOpen: boolean) {
-  const sidebar = document.querySelector(".sidebar");
-  const main = document.querySelector(".app-main");
-  
-  gsap.to(sidebar, {
-    width: isOpen ? "16rem" : "3rem", // 64px / 12px
-    duration: 0.3,
-    ease: "power2.inOut",
-  });
-  
-  gsap.to(main, {
-    paddingLeft: isOpen ? "16rem" : "3rem",
-    duration: 0.3,
-    ease: "power2.inOut",
-  });
-}
-
-export function animateCardHover(card: HTMLElement) {
-  const tl = gsap.timeline({ paused: true });
-  
-  tl.to(card, {
-    boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-    y: -4,
-    duration: 0.15,
-  });
-  
-  card.addEventListener("mouseenter", () => tl.play());
-  card.addEventListener("mouseleave", () => tl.reverse());
-}
-````
-
-### 4.4 Avoid this
-
-````html
-<!-- ❌ GSAP cannot reliably target this -->
-<button class="px-4 py-2 bg-primary text-white hover:bg-secondary rounded-md"></button>
-
-<!-- ✅ GSAP can target this -->
-<button class="btn btn-primary"></button>
-````
-
-The class structure must support:
-
-- Timeline-based animations
-- Group selection
-- Long-term refactors without animation breakage
-
-## 5. Migration Strategy
-
-### 5.1 Phased Refactoring (Non-Breaking)
+### 4.1 Phased Refactoring (Non-Breaking)
 
 #### Phase 1: Tokens (Days 1–2)
 Goal: Create new token infrastructure without touching component code.
@@ -883,14 +813,336 @@ Usage in JSX:
 <Button variant="primary" className="w-full">Full Width</Button>
 ````
 
-////Ensuite, demander à l'ia de faire la même chose pour Card.tsx et Badge.tsx (futurs)
+**Step 3.2: Create Card Component with Variant**
+````tsx
+import { cn } from "@/lib/utils";
+import React from "react";
 
-4. Phase 4: GSAP Integration (Days 9–10)
+// Define all card variants
+const cardVariants = {
+  default: "bg-surface border border-border",
+  elevated: "bg-surface shadow-lg",
+  filled: "bg-surface-alt",
+  outline: "bg-transparent border-2 border-border",
+} as const;
+
+// Define card padding options
+const cardPadding = {
+  none: "p-0",
+  sm: "p-sm",
+  md: "p-md",
+  lg: "p-lg",
+  xl: "p-xl",
+} as const;
+
+// Define card states
+const cardStates = {
+  default: "",
+  hoverable: "card--hoverable",
+  interactive: "cursor-pointer hover:shadow-md transition-shadow duration-fast",
+} as const;
+
+// Type-safe props
+type CardVariant = keyof typeof cardVariants;
+type CardPadding = keyof typeof cardPadding;
+type CardState = keyof typeof cardStates;
+
+type CardProps = {
+  variant?: CardVariant;
+  padding?: CardPadding;
+  state?: CardState;
+  asChild?: boolean;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+export function Card({
+  variant = "default",
+  padding = "lg",
+  state = "default",
+  className,
+  ...props
+}: CardProps) {
+  return (
+    <div
+      className={cn(
+        "card",                        // Base component class (from index.css)
+        cardVariants[variant],         // Variant styles
+        cardPadding[padding],          // Padding size
+        cardStates[state],             // State modifiers
+        className                      // User overrides
+      )}
+      {...props}
+    />
+  );
+}
+
+// Export variants for external reference (e.g., GSAP selectors)
+export { cardVariants, cardPadding, cardStates };
+````
+
+CSS Support in index.css:
+````css
+@layer components {
+  /* ...existing code... */
+  
+  /* ─── Card Base ─── */
+  .card {
+    @apply rounded-lg border border-border bg-surface shadow-sm;
+    /* Padding is handled by padding utilities, not here */
+  }
+  
+  .card--hoverable {
+    @apply cursor-pointer transition-[box-shadow,transform] duration-fast;
+    @apply hover:shadow-md hover:translate-y-[-2px];
+  }
+}
+````
+
+Usage in JSX:
+````jsx
+// Default card with default padding (lg)
+<Card>
+  <h3>Card Title</h3>
+  <p>Card content goes here</p>
+</Card>
+
+// Elevated variant with extra padding
+<Card variant="elevated" padding="xl">
+  <h2>Important Content</h2>
+  <p>This card stands out with a shadow</p>
+</Card>
+
+// Filled variant with hoverable state
+<Card variant="filled" state="hoverable">
+  <div className="flex items-center gap-4">
+    <img src="icon.svg" alt="Icon" />
+    <span>Hover to see effect</span>
+  </div>
+</Card>
+
+// Outline variant with no padding (for custom layouts)
+<Card variant="outline" padding="none">
+  <img src="banner.jpg" alt="Banner" className="w-full" />
+  <div className="p-md">
+    <h3>Custom Layout</h3>
+    <p>Image with custom padding below</p>
+  </div>
+</Card>
+
+// Interactive card with small padding
+<Card state="interactive" padding="sm" onClick={() => console.log('clicked')}>
+  <div className="text-center">
+    <p className="text-sm">Click me</p>
+  </div>
+</Card>
+
+// Card with custom className override
+<Card variant="elevated" className="max-w-md mx-auto">
+  <h3>Centered Card</h3>
+  <p>This card is centered with max width</p>
+</Card>
+
+// Card as a link wrapper
+<Card variant="default" state="hoverable" padding="md">
+  <a href="/details" className="block">
+    <h4 className="font-semibold mb-2">Clickable Card</h4>
+    <p className="text-muted">Click anywhere to navigate</p>
+  </a>
+</Card>
+````
+
+**Step 3.3: Create Badge Component with Variant**
+````tsx
+import { cn } from "@/lib/utils";
+import React from "react";
+
+// Define all badge variants
+const badgeVariants = {
+  primary: "bg-primary text-white",
+  secondary: "bg-secondary text-white",
+  success: "bg-success text-white",
+  danger: "bg-danger text-white",
+  warning: "bg-warning text-white",
+  muted: "bg-muted text-white",
+  outline: "border border-border text-on-surface bg-transparent",
+} as const;
+
+// Define badge sizes
+const badgeSizes = {
+  sm: "px-2 py-0.5 text-xs",
+  md: "px-3 py-1 text-sm",
+  lg: "px-4 py-1.5 text-base",
+} as const;
+
+// Define badge shapes
+const badgeShapes = {
+  default: "rounded-md",
+  pill: "rounded-full",
+  square: "rounded-sm",
+} as const;
+
+// Type-safe props
+type BadgeVariant = keyof typeof badgeVariants;
+type BadgeSize = keyof typeof badgeSizes;
+type BadgeShape = keyof typeof badgeShapes;
+
+type BadgeProps = {
+  variant?: BadgeVariant;
+  size?: BadgeSize;
+  shape?: BadgeShape;
+} & React.HTMLAttributes<HTMLSpanElement>;
+
+export function Badge({
+  variant = "primary",
+  size = "md",
+  shape = "default",
+  className,
+  ...props
+}: BadgeProps) {
+  return (
+    <span
+      className={cn(
+        "badge",                       // Base component class (from index.css)
+        badgeVariants[variant],        // Variant colors
+        badgeSizes[size],              // Size
+        badgeShapes[shape],            // Shape
+        className                      // User overrides
+      )}
+      {...props}
+    />
+  );
+}
+
+// Export variants for external reference (e.g., GSAP selectors)
+export { badgeVariants, badgeSizes, badgeShapes };
+````
+CSS Support in index.css:
+````css
+@layer components {
+  /* ...existing code... */
+  
+  /* ─── Badge Base ─── */
+  .badge {
+    @apply inline-flex items-center justify-center font-medium;
+    @apply transition-colors duration-fast;
+  }
+}
+````
+
+Usage in JSX:
+````jsx
+// Card examples
+<Card>Default card</Card>
+
+<Card variant="elevated" padding="xl">
+  Elevated card with extra padding
+</Card>
+
+<Card variant="filled" state="hoverable">
+  Hoverable filled card
+</Card>
+
+<Card variant="outline" padding="none">
+  <img src="..." alt="..." />
+  <div className="p-md">
+    Custom padding structure
+  </div>
+</Card>
+
+// Badge examples
+<Badge>Default</Badge>
+
+<Badge variant="success" size="sm" shape="pill">
+  Success
+</Badge>
+
+<Badge variant="danger" size="lg">
+  Error
+</Badge>
+
+<Badge variant="outline" shape="square">
+  Outlined
+</Badge>
+
+<Badge variant="warning" className="uppercase">
+  Custom styling
+</Badge>
+````
+
+## 4. GSAP Integration (Days 9–10)
    - Update GSAP selectors to use component classes
    - Test animations with new structure
    - Remove inline styles from animated elements
 
-5.2 Verification Checklist
+
+### 4.1 Requirements
+
+- DOM elements must expose **stable semantic class hooks**.
+- GSAP must be able to target elements without parsing Tailwind utility soup.
+- Animations must reference component classes, not inline utilities.
+
+### 4.2 Preferred Output
+
+````html
+<button class="btn btn-primary"></button>
+<div class="card card--hoverable"></div>
+<section class="section"></section>
+<div class="sidebar sidebar--collapsed"></div>
+````
+
+### 4.3 GSAP Implementation Pattern
+
+````ts
+// filepath: src/animations/sidebar.ts
+import gsap from "gsap";
+
+export function animateSidebarToggle(isOpen: boolean) {
+  const sidebar = document.querySelector(".sidebar");
+  const main = document.querySelector(".app-main");
+  
+  gsap.to(sidebar, {
+    width: isOpen ? "16rem" : "3rem", // 64px / 12px
+    duration: 0.3,
+    ease: "power2.inOut",
+  });
+  
+  gsap.to(main, {
+    paddingLeft: isOpen ? "16rem" : "3rem",
+    duration: 0.3,
+    ease: "power2.inOut",
+  });
+}
+
+export function animateCardHover(card: HTMLElement) {
+  const tl = gsap.timeline({ paused: true });
+  
+  tl.to(card, {
+    boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+    y: -4,
+    duration: 0.15,
+  });
+  
+  card.addEventListener("mouseenter", () => tl.play());
+  card.addEventListener("mouseleave", () => tl.reverse());
+}
+````
+
+### 4.4 Avoid this
+
+````html
+<!-- ❌ GSAP cannot reliably target this -->
+<button class="px-4 py-2 bg-primary text-white hover:bg-secondary rounded-md"></button>
+
+<!-- ✅ GSAP can target this -->
+<button class="btn btn-primary"></button>
+````
+
+The class structure must support:
+
+- Timeline-based animations
+- Group selection
+- Long-term refactors without animation breakage
+
+## 5. Verification Checklist
 - No duplicated CSS variable definitions
 - All colors reference tailwind.config.ts
 - All component classes have semantic names (not visual-only)
