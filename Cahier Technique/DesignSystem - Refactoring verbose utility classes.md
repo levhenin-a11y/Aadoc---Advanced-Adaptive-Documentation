@@ -29,6 +29,7 @@ style={{
 backgroundImage: "linear-gradient(to top, hsl(var(--background)), hsl(var(--primary)))"
 
 }}
+
 ````
 
 Use:
@@ -52,6 +53,7 @@ hsl(var(--primary))
 }
 
 }
+
 ````
 
 Now it's reusable, targetable, and animatable.
@@ -74,6 +76,7 @@ Instead of:
 ````tsx
 
 <div className="flex flex-col min-h-screen">
+
 ````
 
 Use:
@@ -123,12 +126,13 @@ sidebarOpen ? "pl-64" : "pl-12 lg:pl-16"
 )}
 
 style={{ backgroundImage: "linear-gradient(to top, hsl(var(--background)), hsl(var(--primary)))" }}
+>
 
-\>
+````
 
 Must be refactored in:
 
-(code) tsx
+````tsx
 
 <main
 
@@ -143,8 +147,7 @@ sidebarOpen
 : "app-main--sidebar-collapsed"
 
 )}
-
-\>
+>
 
 ````
 
@@ -185,43 +188,48 @@ secondary: "bg-muted text-on-muted hover:bg-muted-hover",
 danger: "bg-danger text-white hover:bg-danger-hover",
 
 };
+
 ````
 
 ### 3.2 Example React Implementation
 
 ````tsx
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"; 
 
-type ButtonProps = {
+  
 
-variant?: keyof typeof buttonVariants;
+type ButtonProps = { 
 
-} & React.ButtonHTMLAttributes&lt;HTMLButtonElement&gt;;
+  variant?: keyof typeof buttonVariants; 
 
-export function Button({
+} & React.ButtonHTMLAttributes<HTMLButtonElement>; 
 
-variant = "primary",
+  
 
-className,
+export function Button({ 
 
-...props
+  variant = "primary", 
 
-}: ButtonProps) {
+  className, 
 
-return (
+  ...props 
 
-<button
+}: ButtonProps) { 
 
-className={cn("btn", buttonVariants\[variant\], className)}
+  return ( 
 
-{...props}
+    <button 
 
-/>
+      className={cn("btn", buttonVariants[variant], className)} 
 
-);
+      {...props} 
 
-}
+    /> 
+
+  ); 
+
+} 
 
 ````
 
@@ -234,17 +242,21 @@ className={cn("btn", buttonVariants\[variant\], className)}
 
 ### 4.2 Preferred Output
 
-(code) html
+````html
 
-&lt;button class="btn btn-primary"&gt;&lt;/button&gt;  
-&lt;div class="card"&gt;&lt;/div&gt;  
-&lt;section class="section"&gt;&lt;/section&gt;  
+<button class="btn btn-primary"></button> 
+<div class="card"></div> 
+<section class="section"></section>
+
+````
 
 ### 4.3 Avoid
 
-(code) html
+````html
 
-&lt;button class="px-4 py-2 bg-primary text-white hover:bg-secondary"&gt;&lt;/button&gt;  
+<button class="px-4 py-2 bg-primary text-white hover:bg-secondary"></button> 
+
+````
 
 The class structure must support:
 
@@ -252,7 +264,7 @@ The class structure must support:
 - Group selection
 - Long-term refactors without animation breakage
 
-## 5\. Expected Deliverables
+## 5. Expected Deliverables
 
 The refactor must produce:
 
@@ -264,7 +276,7 @@ The refactor must produce:
 - Readable JSX with minimal inline utilities
 - GSAP-ready DOM selectors
 
-## 6\. Best Practices & Constraints
+## 6. Best Practices & Constraints
 
 - Do not over-abstract with @apply
 - Avoid one-off component classes
@@ -272,7 +284,7 @@ The refactor must produce:
 - Keep everything compatible with Tailwind JIT and tree-shaking
 - Assume React + TypeScript environment
 
-## 7\. Output Style
+## 7. Output Style
 
 - Be opinionated and implementation-focused
 - Use concrete examples
