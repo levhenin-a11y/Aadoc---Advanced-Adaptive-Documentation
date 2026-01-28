@@ -84,6 +84,42 @@
     /* Footer */
     --footer-background: 222 47% 11%; /* hsl(222, 47%, 11%) */
     --footer-foreground: 214 32% 81%; /* hsl(214, 32%, 81%) */
+    
+    /* ========================================
+       NEW SEMANTIC TOKENS - Phase 1
+       ======================================== */
+    
+    /* Semantic Surfaces */
+    --surface-alt: 0 0% 98%;
+    --on-surface: 0 0% 10%;
+    
+    /* Primary States */
+    --primary-hover: 229 68% 45%;
+    --primary-active: 229 68% 35%;
+    
+    /* Secondary States */
+    --secondary-hover: 214 32% 81%;
+    
+    /* Status Colors */
+    --danger: 0 84% 60%;
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    
+    /* Border Radius Scale */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    
+    /* Transition Durations */
+    --duration-fast: 150ms;
+    --duration-base: 300ms;
+    --duration-slow: 500ms;
   }
   
   .dark {
@@ -171,5 +207,51 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  
+  /* Gradients */
+  .bg-app-gradient {
+    background-image: linear-gradient(
+      to top,
+      hsl(var(--surface)),
+      hsl(var(--primary))
+    );
+  }
+  
+  .bg-gradient-secondary {
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--secondary)),
+      hsl(var(--secondary-hover))
+    );
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(16px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  .fade-in {
+    animation: fadeIn var(--duration-base) ease-out;
+  }
+  
+  .slide-up {
+    animation: slideUp var(--duration-base) ease-out;
+  }
+  
+  /* Scroll utilities */
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
   }
 }
