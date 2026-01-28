@@ -772,17 +772,125 @@ Rollback if needed:
 
 Revert the component refactors in Step 2.2, keep CSS in index.css (no harm)
 
-3. Phase 3: Variant System (Days 6–8)
+#### Phase 3: Variant System (Days 6–8)
+Phase 3 builds on the component classes from Phase 2 by introducing variant patterns for dynamic styling. This allows components like Button, Card, and Badge to accept props that control color, size, and state without verbose className strings.
+
     - Build Button.tsx with buttonVariants
     - Build Card.tsx with cardVariants
+    - Build Badge.tsx with badgeVariants
     - Apply to all component instances
+
+Goals:
+- Create reusable variant objects in TypeScript
+- Implement variant props in React components
+- Ensure all variants have corresponding CSS support
+- Maintain type safety and IDE autocomplete
+- Keep GSAP selectors stable across variants
+
+**Step 3.1: Create Button Component with Variant**
+````tsx
+import { cn } from "@/lib/utils";
+import React from "react";
+
+// Define all button variants
+const buttonVariants = {
+  primary: "bg-primary text-white hover:bg-primary-hover active:bg-primary-active",
+  secondary: "bg-secondary text-white hover:bg-secondary-hover active:bg-secondary-active",
+  danger: "bg-danger text-white hover:bg-danger-active",
+  ghost: "bg-transparent text-on-surface hover:bg-surface-alt",
+  outline: "border border-border text-on-surface hover:bg-surface-alt",
+} as const;
+
+// Define all button sizes
+const buttonSizes = {
+  sm: "px-3 py-1 text-sm",
+  md: "px-4 py-2 text-base",
+  lg: "px-6 py-3 text-lg",
+} as const;
+
+// Define all button states (optional: for compound classes)
+const buttonStates = {
+  default: "",
+  loading: "opacity-50 cursor-not-allowed",
+  disabled: "opacity-50 cursor-not-allowed",
+} as const;
+
+// Type-safe props
+type ButtonVariant = keyof typeof buttonVariants;
+type ButtonSize = keyof typeof buttonSizes;
+type ButtonState = keyof typeof buttonStates;
+
+type ButtonProps = {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  state?: ButtonState;
+  asChild?: boolean;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+export function Button({
+  variant = "primary",
+  size = "md",
+  state = "default",
+  className,
+  disabled,
+  ...props
+}: ButtonProps) {
+  return (
+    <button
+      className={cn(
+        "btn",                              // Base component class (from index.css)
+        buttonVariants[variant],            // Variant colors
+        buttonSizes[size],                  // Size
+        buttonStates[state],                // State
+        disabled && "opacity-50 cursor-not-allowed",
+        className                           // User overrides
+      )}
+      disabled={disabled}
+      {...props}
+    />
+  );
+}
+
+// Export variants for external reference (e.g., GSAP selectors)
+export { buttonVariants, buttonSizes, buttonStates };
+````
+CSS Support in index.css:
+````css
+@layer components {
+  /* Base button (no variant-specific colors) */
+  .btn {
+    @apply rounded-md font-medium transition-colors duration-fast;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    /* Padding is handled by size utilities, not here */
+  }
+}
+````
+Usage in JSX:
+````jsx
+// Default: primary, md
+<Button>Click me</Button>
+
+// Danger variant, large size
+<Button variant="danger" size="lg">Delete</Button>
+
+// Ghost style, small
+<Button variant="ghost" size="sm">Cancel</Button>
+
+// Disabled state
+<Button disabled>Disabled</Button>
+
+// With custom className override
+<Button variant="primary" className="w-full">Full Width</Button>
+````
+
+////Ensuite, demander à l'ia de faire la même chose pour Card.tsx et Badge.tsx (futurs)
 
 4. Phase 4: GSAP Integration (Days 9–10)
    - Update GSAP selectors to use component classes
    - Test animations with new structure
    - Remove inline styles from animated elements
 
-### 5.2 Verification Checklist
+5.2 Verification Checklist
 - No duplicated CSS variable definitions
 - All colors reference tailwind.config.ts
 - All component classes have semantic names (not visual-only)
