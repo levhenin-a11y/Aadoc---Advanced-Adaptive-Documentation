@@ -9,7 +9,9 @@ interface MainLayoutProps {
 }
 
 const MainLayout = ({ children }: MainLayoutProps) => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(() => {
+    return localStorage.getItem("pref-sidebar") === "open";
+  });
 
   return (
     <div className="flex flex-col min-h-screen">
