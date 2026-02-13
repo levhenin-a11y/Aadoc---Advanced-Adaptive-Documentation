@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/hooks/use-toast";
 import {
   Select,
   SelectContent,
@@ -29,52 +31,62 @@ const languages = [
   { label: "Español", value: "ES" },
 ];
 
+interface SavedPrefs {
+  homePage: string;
+  language: string;
+  isDarkMode: boolean;
+  isSidebarOpen: boolean;
+}
+
+const loadSavedPrefs = (): SavedPrefs => {
+  const savedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  return {
+    homePage: localStorage.getItem("pref-homepage") || "/",
+    language: localStorage.getItem("pref-language") || "FR",
+    isDarkMode: savedTheme === "dark" || (!savedTheme && prefersDark),
+    isSidebarOpen: localStorage.getItem("pref-sidebar") === "open",
+  };
+};
+
 const EditPreferences = () => {
-  const [homePage, setHomePage] = useState("/");
-  const [language, setLanguage] = useState("FR");
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [prefs, setPrefs] = useState<SavedPrefs>(loadSavedPrefs);
+  const [savedPrefs, setSavedPrefs] = useState<SavedPrefs>(loadSavedPrefs);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setIsDarkMode(savedTheme === "dark" || (!savedTheme && prefersDark));
-
-    const savedHomePage = localStorage.getItem("pref-homepage");
-    if (savedHomePage) setHomePage(savedHomePage);
-
-    const savedLanguage = localStorage.getItem("pref-language");
-    if (savedLanguage) setLanguage(savedLanguage);
-
-    const savedSidebar = localStorage.getItem("pref-sidebar");
-    if (savedSidebar) setIsSidebarOpen(savedSidebar === "open");
+    const loaded = loadSavedPrefs();
+    setPrefs(loaded);
+    setSavedPrefs(loaded);
   }, []);
 
-  const handleDarkModeToggle = (checked: boolean) => {
-    setIsDarkMode(checked);
-    if (checked) {
+  const handleSave = useCallback(() => {
+    // Persist to localStorage
+    localStorage.setItem("pref-homepage", prefs.homePage);
+    localStorage.setItem("pref-language", prefs.language);
+    localStorage.setItem("theme", prefs.isDarkMode ? "dark" : "light");
+    localStorage.setItem("pref-sidebar", prefs.isSidebarOpen ? "open" : "closed");
+
+    // Apply dark mode
+    if (prefs.isDarkMode) {
       document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
     }
-  };
 
-  const handleHomePageChange = (value: string) => {
-    setHomePage(value);
-    localStorage.setItem("pref-homepage", value);
-  };
+    setSavedPrefs(prefs);
+    toast({ title: "Préférences sauvegardées", description: "Vos préférences ont été mises à jour." });
+  }, [prefs]);
 
-  const handleLanguageChange = (value: string) => {
-    setLanguage(value);
-    localStorage.setItem("pref-language", value);
-  };
+  const handleCancel = useCallback(() => {
+    setPrefs(savedPrefs);
 
-  const handleSidebarToggle = (checked: boolean) => {
-    setIsSidebarOpen(checked);
-    localStorage.setItem("pref-sidebar", checked ? "open" : "closed");
-  };
+    // Revert dark mode visually
+    if (savedPrefs.isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [savedPrefs]);
 
   return (
     <div className="max-w-2xl mx-auto w-full space-y-8">
@@ -83,7 +95,7 @@ const EditPreferences = () => {
         <Label htmlFor="homepage" className="text-base font-semibold text-primary-foreground">
           Page d'accueil
         </Label>
-        <Select value={homePage} onValueChange={handleHomePageChange}>
+        <Select value={prefs.homePage} onValueChange={(v) => setPrefs((p) => ({ ...p, homePage: v }))}>
           <SelectTrigger id="homepage" className="bg-card text-card-foreground border-border">
             <SelectValue placeholder="Choisir la page d'accueil" />
           </SelectTrigger>
@@ -102,7 +114,7 @@ const EditPreferences = () => {
         <Label htmlFor="language" className="text-base font-semibold text-primary-foreground">
           Langue
         </Label>
-        <Select value={language} onValueChange={handleLanguageChange}>
+        <Select value={prefs.language} onValueChange={(v) => setPrefs((p) => ({ ...p, language: v }))}>
           <SelectTrigger id="language" className="bg-card text-card-foreground border-border">
             <SelectValue placeholder="Choisir la langue" />
           </SelectTrigger>
@@ -121,12 +133,12 @@ const EditPreferences = () => {
         <div className="space-y-0.5">
           <Label className="text-base font-semibold text-primary-foreground">Mode</Label>
           <p className="text-sm text-primary-foreground/70">
-            {isDarkMode ? "Dark" : "Light"}
+            {prefs.isDarkMode ? "Dark" : "Light"}
           </p>
         </div>
         <Switch
-          checked={isDarkMode}
-          onCheckedChange={handleDarkModeToggle}
+          checked={prefs.isDarkMode}
+          onCheckedChange={(c) => setPrefs((p) => ({ ...p, isDarkMode: c }))}
           aria-label="Basculer entre mode Light et Dark"
         />
       </div>
@@ -138,14 +150,24 @@ const EditPreferences = () => {
             État Menu de gauche
           </Label>
           <p className="text-sm text-primary-foreground/70">
-            {isSidebarOpen ? "Ouvert" : "Fermé"}
+            {prefs.isSidebarOpen ? "Ouvert" : "Fermé"}
           </p>
         </div>
         <Switch
-          checked={isSidebarOpen}
-          onCheckedChange={handleSidebarToggle}
+          checked={prefs.isSidebarOpen}
+          onCheckedChange={(c) => setPrefs((p) => ({ ...p, isSidebarOpen: c }))}
           aria-label="Basculer le menu de gauche ouvert ou fermé par défaut"
         />
+      </div>
+
+      {/* Boutons Sauvegarder / Annuler */}
+      <div className="flex justify-end gap-4 pt-4">
+        <Button variant="outline" onClick={handleCancel} className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+          Annuler
+        </Button>
+        <Button onClick={handleSave} className="bg-accent text-accent-foreground hover:bg-accent/90">
+          Sauvegarder
+        </Button>
       </div>
     </div>
   );
