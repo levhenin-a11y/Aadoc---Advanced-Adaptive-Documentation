@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import logo from "@/assets/logo.png";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   username?: string;
@@ -11,6 +12,16 @@ interface HeaderProps {
 const Header = ({ username = "heninvu" }: HeaderProps) => {
   const [isDark, setIsDark] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState("");
+  const navigate = useNavigate();
+
+  // Load and listen for avatar changes
+  useEffect(() => {
+    const loadAvatar = () => setAvatarUrl(localStorage.getItem("account-avatar") || "");
+    loadAvatar();
+    window.addEventListener("account-updated", loadAvatar);
+    return () => window.removeEventListener("account-updated", loadAvatar);
+  }, []);
 
   useEffect(() => {
     // Check for saved theme preference or system preference
@@ -94,13 +105,19 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
             {/* Separator */}
           <div className="hidden nav:block h-6 w-0.5 bg-header-foreground/50" />
 
-            <span className="text-sm hidden sm:inline">USER / {username}</span>
-            <Avatar className="h-8 w-8 border-2 border-header-foreground/20">
-              <AvatarImage src="" alt={`Avatar de ${username}`} />
-              <AvatarFallback className="bg-primary-foreground text-primary text-xs">
-                {username.slice(0, 2).toUpperCase()}
-              </AvatarFallback>
-            </Avatar>
+            <button
+              onClick={() => navigate("/account")}
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
+              aria-label="Accéder à la page Account"
+            >
+              <span className="text-sm hidden sm:inline">USER / {username}</span>
+              <Avatar className="h-8 w-8 border-2 border-header-foreground/20">
+                <AvatarImage src={avatarUrl} alt={`Avatar de ${username}`} />
+                <AvatarFallback className="bg-primary-foreground text-primary text-xs">
+                  {username.slice(0, 2).toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+            </button>
           </div>
         </div>
 
