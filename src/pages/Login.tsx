@@ -17,8 +17,9 @@ const Login = () => {
       username,
       rememberMe
     });
-    // Redirect to home page after login
-    navigate("/");
+    // Redirect based on homepage preference
+    const homepage = localStorage.getItem("pref-homepage") || "/";
+    navigate(homepage);
   };
   return <div className="min-h-screen flex flex-col bg-background">
       {/* Main Content */}

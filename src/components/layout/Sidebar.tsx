@@ -1,4 +1,4 @@
-import { ChevronRight, ChevronDown, Home, FileSearch, Upload, Users, Settings, Database, FolderOpen, FileUp, FileCheck, Search, UserCheck, GitBranch, FileText, Palette, Bell, Shield, HelpCircle } from "lucide-react";
+import { ChevronRight, ChevronDown, Home, FileSearch, Upload, Users, Settings, Database, FolderOpen, FileUp, FileCheck, Search, UserCheck, GitBranch, FileText, Palette, Bell, Shield, HelpCircle, UserCog } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -53,6 +53,7 @@ const menuSections: MenuSection[] = [
     icon: Settings,
     label: "Paramètres",
     items: [
+      { label: "Account", href: "/account", icon: UserCog },
       { label: "Préférences", href: "/preferences", icon: Palette },
       { label: "Notifications", href: "/notifications", icon: Bell },
       { label: "Sécurité", href: "/security", icon: Shield },
