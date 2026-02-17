@@ -89,14 +89,14 @@ const EditPreferences = () => {
   }, [savedPrefs]);
 
   return (
-    <div className="max-w-2xl mx-auto w-full space-y-8">
+    <div className="settings-panel">
       {/* Page d'accueil */}
-      <div className="space-y-2">
-        <Label htmlFor="homepage" className="text-base font-semibold text-primary-foreground">
+      <div className="settings-section">
+        <Label htmlFor="homepage" className="settings-label">
           Page d'accueil
         </Label>
         <Select value={prefs.homePage} onValueChange={(v) => setPrefs((p) => ({ ...p, homePage: v }))}>
-          <SelectTrigger id="homepage" className="bg-card text-card-foreground border-border">
+          <SelectTrigger id="homepage" className="settings-input">
             <SelectValue placeholder="Choisir la page d'accueil" />
           </SelectTrigger>
           <SelectContent>
@@ -110,12 +110,12 @@ const EditPreferences = () => {
       </div>
 
       {/* Langue */}
-      <div className="space-y-2">
-        <Label htmlFor="language" className="text-base font-semibold text-primary-foreground">
+      <div className="settings-section">
+        <Label htmlFor="language" className="settings-label">
           Langue
         </Label>
         <Select value={prefs.language} onValueChange={(v) => setPrefs((p) => ({ ...p, language: v }))}>
-          <SelectTrigger id="language" className="bg-card text-card-foreground border-border">
+          <SelectTrigger id="language" className="settings-input">
             <SelectValue placeholder="Choisir la langue" />
           </SelectTrigger>
           <SelectContent>
@@ -129,10 +129,10 @@ const EditPreferences = () => {
       </div>
 
       {/* Mode */}
-      <div className="flex items-center justify-between">
-        <div className="space-y-0.5">
-          <Label className="text-base font-semibold text-primary-foreground">Mode</Label>
-          <p className="text-sm text-primary-foreground/70">
+      <div className="settings-row">
+        <div className="settings-row-text">
+          <Label className="settings-row-label">Mode</Label>
+          <p className="settings-row-value">
             {prefs.isDarkMode ? "Dark" : "Light"}
           </p>
         </div>
@@ -144,12 +144,12 @@ const EditPreferences = () => {
       </div>
 
       {/* État Menu de gauche */}
-      <div className="flex items-center justify-between">
-        <div className="space-y-0.5">
-          <Label className="text-base font-semibold text-primary-foreground">
+      <div className="settings-row">
+        <div className="settings-row-text">
+          <Label className="settings-row-label">
             État Menu de gauche
           </Label>
-          <p className="text-sm text-primary-foreground/70">
+          <p className="settings-row-value">
             {prefs.isSidebarOpen ? "Ouvert" : "Fermé"}
           </p>
         </div>
@@ -161,11 +161,11 @@ const EditPreferences = () => {
       </div>
 
       {/* Boutons Sauvegarder / Annuler */}
-      <div className="flex justify-end gap-4 pt-4">
-        <Button variant="outline" onClick={handleCancel} className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+      <div className="settings-actions">
+        <Button variant="outline" onClick={handleCancel} className="btn-outline-light">
           Annuler
         </Button>
-        <Button onClick={handleSave} className="bg-accent text-accent-foreground hover:bg-accent/90">
+        <Button onClick={handleSave} className="btn-accent">
           Sauvegarder
         </Button>
       </div>

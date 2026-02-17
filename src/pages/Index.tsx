@@ -6,14 +6,14 @@ const Index = () => {
   return (
     <MainLayout>
       {/* Tagline */}
-      <div className="text-center mb-8">
-        <h2 className="text-xl md:text-2xl font-medium text-primary-foreground">
+      <div className="tagline-block">
+        <h2 className="tagline-title">
           Consult / Upload / Assign &gt; Done.
         </h2>
       </div>
 
       {/* Action Cards */}
-      <section className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto flex-1">
+      <section className="action-grid">
         {/* Consult Card */}
         <ActionCard
           title="CONSULT"

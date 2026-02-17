@@ -55,29 +55,29 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
 
   return (
     <>
-      <header className="bg-header text-header-foreground" role="banner">
-        <div className="flex items-center gap-3 px-4 py-3">
+      <header className="header-root" role="banner">
+        <div className="header-inner">
           {/* Logo and Brand */}
-          <div className="flex items-center gap-3">
+          <div className="header-brand">
             <img 
               src={logo} 
               alt="Logo Aadoc - Retour à l'accueil" 
-              className="h-12 w-12 rounded object-cover"
+              className="header-logo"
             />
             <div>
-              <h1 className="text-lg font-bold font-serif">Aadoc</h1>
-              <p className="hidden sm:block text-xs opacity-80">Adapted Advanced Documentation</p>
+              <h1 className="header-title">Aadoc</h1>
+              <p className="header-subtitle">Adapted Advanced Documentation</p>
             </div>
           </div>
 
           {/* Desktop/Tablet Navigation - visible on nav (830px) and up */}
-          <nav className="hidden nav:flex nav:flex-1 nav:justify-center" aria-label="Navigation principale">
-            <ul className="flex items-center gap-6">
+          <nav className="header-nav-desktop" aria-label="Navigation principale">
+            <ul className="header-nav-list">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a 
                     href={link.href} 
-                    className="text-sm text-header-foreground hover:text-header-foreground/80 transition-colors"
+                    className="header-nav-link"
                   >
                     {link.label}
                   </a>
@@ -87,33 +87,33 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
           </nav>
 
           {/* Separator */}
-          <div className="hidden nav:block h-6 w-0.5 bg-header-foreground/50" />
+          <div className="header-separator" />
 
           {/* User info and Dark mode toggle */}
-          <div className="flex items-center gap-3 ml-auto">
+          <div className="header-actions">
             {/* Dark mode toggle */}
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleDarkMode}
-              className="text-header-foreground hover:bg-header-foreground/10"
+              className="header-icon-btn"
               aria-label={isDark ? "Activer le mode clair" : "Activer le mode sombre"}
             >
               {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
 
             {/* Separator */}
-          <div className="hidden nav:block h-6 w-0.5 bg-header-foreground/50" />
+          <div className="header-separator" />
 
             <button
               onClick={() => navigate("/account")}
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
+              className="header-account-btn"
               aria-label="Accéder à la page Account"
             >
-              <span className="text-sm hidden sm:inline">USER / {username}</span>
-              <Avatar className="h-8 w-8 border-2 border-header-foreground/20">
+              <span className="header-account-name">USER / {username}</span>
+              <Avatar className="header-avatar">
                 <AvatarImage src={avatarUrl} alt={`Avatar de ${username}`} />
-                <AvatarFallback className="bg-primary-foreground text-primary text-xs">
+                <AvatarFallback className="header-avatar-fallback">
                   {username.slice(0, 2).toUpperCase()}
                 </AvatarFallback>
               </Avatar>
@@ -124,19 +124,19 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
 
         {/* Mobile Navigation bar with menu toggle - visible below nav (830px) */}
         <nav 
-          className="nav:hidden bg-header/90 border-t border-header-foreground/10"
+          className="header-mobile-nav"
           aria-label="Navigation mobile"
         >
-          <div className="flex items-center justify-center px-4 py-2">
+          <div className="header-mobile-inner">
             <Button 
               variant="ghost" 
               size="icon"
               onClick={() => setIsMenuOpen(true)}
-              className="text-header-foreground hover:bg-header-foreground/10 focus:ring-2 focus:ring-header-foreground/50"
+              className="header-mobile-menu-btn"
               aria-label="Ouvrir le menu de navigation"
               aria-expanded={isMenuOpen}
             >
-              <Menu className="h-16 w-16" />
+              <Menu className="header-mobile-menu-icon" />
               <span className="sr-only">Menu</span>
             </Button>
           </div>
@@ -146,18 +146,18 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
       {/* Mobile Menu Overlay - fullscreen on sm, z-[60] to appear above sidebar (z-50) */}
       {isMenuOpen && (
         <div 
-          className="fixed inset-0 z-[60] bg-header text-header-foreground flex flex-col animate-fade-in nav:hidden"
+          className="header-overlay"
           role="dialog"
           aria-modal="true"
           aria-label="Menu de navigation"
         >
           {/* Close button */}
-          <div className="flex justify-end p-4">
+          <div className="header-overlay-close-row">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(false)}
-              className="text-header-foreground hover:bg-header-foreground/10"
+              className="header-icon-btn"
               aria-label="Fermer le menu"
             >
               <X className="h-6 w-6" />
@@ -165,12 +165,12 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
           </div>
 
           {/* Navigation links */}
-          <nav className="flex-1 flex flex-col items-center justify-center gap-8" aria-label="Navigation principale">
+          <nav className="header-overlay-nav" aria-label="Navigation principale">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-2xl font-serif hover:text-header-foreground/80 transition-colors"
+                className="header-overlay-link"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}

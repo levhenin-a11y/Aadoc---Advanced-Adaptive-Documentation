@@ -49,7 +49,7 @@ const EditAccount = () => {
   }, [savedAccount]);
 
   return (
-    <div className="max-w-2xl mx-auto w-full space-y-8">
+    <div className="settings-panel">
       {/* Photo de profil */}
       <ProfilePicture
         avatarUrl={account.avatarUrl}
@@ -58,65 +58,65 @@ const EditAccount = () => {
       />
 
       {/* Login */}
-      <div className="space-y-2">
-        <Label htmlFor="login" className="text-base font-semibold text-primary-foreground">
+      <div className="settings-section">
+        <Label htmlFor="login" className="settings-label">
           Login
         </Label>
         <Input
           id="login"
           value={account.login}
           disabled
-          className="bg-card text-card-foreground border-border opacity-70"
+          className="settings-input settings-input--disabled"
         />
-        <p className="text-xs text-primary-foreground/60">
+        <p className="settings-help">
           Vous devez être MANAGER afin de modifier ce champ
         </p>
       </div>
 
       {/* Entité hiérarchique */}
-      <div className="space-y-2">
-        <Label htmlFor="entity" className="text-base font-semibold text-primary-foreground">
+      <div className="settings-section">
+        <Label htmlFor="entity" className="settings-label">
           Entité hiérarchique
         </Label>
         <Input
           id="entity"
           value={account.entity}
           disabled
-          className="bg-card text-card-foreground border-border opacity-70"
+          className="settings-input settings-input--disabled"
         />
-        <p className="text-xs text-primary-foreground/60">
+        <p className="settings-help">
           Vous devez être MANAGER afin de modifier ce champ
         </p>
       </div>
 
       {/* Visibilité */}
-      <div className="space-y-2">
-        <Label htmlFor="visibility" className="text-base font-semibold text-primary-foreground">
+      <div className="settings-section">
+        <Label htmlFor="visibility" className="settings-label">
           Visibilité
         </Label>
         <Input
           id="visibility"
           value={account.visibility}
           disabled
-          className="bg-card text-card-foreground border-border opacity-70"
+          className="settings-input settings-input--disabled"
         />
-        <p className="text-xs text-primary-foreground/60">
+        <p className="settings-help">
           DG, UNIT, SERVICE, SECTOR. Plus votre niveau est haut, plus vous pourrez voir de documents dans la Base de Données. Seul votre MANAGER peut modifier ce niveau
         </p>
       </div>
 
       {/* Boutons Sauvegarder / Annuler */}
-      <div className="flex justify-end gap-4 pt-4">
+      <div className="settings-actions">
         <Button
           variant="outline"
           onClick={handleCancel}
-          className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+          className="btn-outline-light"
         >
           Annuler
         </Button>
         <Button
           onClick={handleSave}
-          className="bg-accent text-accent-foreground hover:bg-accent/90"
+          className="btn-accent"
         >
           Sauvegarder
         </Button>

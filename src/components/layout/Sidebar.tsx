@@ -78,24 +78,24 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   return (
     <aside
       className={cn(
-        "absolute left-0 top-0 z-50 h-full bg-sidebar text-sidebar-foreground transition-all duration-300",
-        isOpen ? "w-full sm:w-64" : "w-12 lg:w-16"
+        "sidebar-root",
+        isOpen ? "sidebar-root--open" : "sidebar-root--collapsed"
       )}
       role="navigation"
       aria-label="Menu latéral de navigation"
     >
-      <div className="flex flex-col h-full overflow-hidden">
+      <div className="sidebar-frame">
         {/* Toggle button */}
-        <div className="flex justify-end p-2">
+        <div className="sidebar-toggle-row">
           <Button
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="text-sidebar-foreground hover:bg-sidebar-accent focus:ring-2 focus:ring-sidebar-ring"
+            className="sidebar-toggle-btn"
             aria-label={isOpen ? "Réduire le menu" : "Étendre le menu"}
           >
             <ChevronRight className={cn(
-              "h-5 w-5 transition-transform",
+              "sidebar-toggle-icon",
               isOpen && "rotate-180"
             )} />
           </Button>
@@ -104,8 +104,8 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         {/* Menu sections */}
         <nav 
           className={cn(
-            "flex-1 px-2 py-2 space-y-1 overflow-y-auto",
-            !isOpen && "hidden lg:block"
+            "sidebar-nav",
+            !isOpen && "sidebar-nav--collapsed"
           )} 
           aria-label="Navigation principale"
         >
@@ -113,26 +113,24 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             const isSectionExpanded = expandedSections.includes(section.label);
             
             return (
-              <div key={section.label} className="mb-2">
+              <div key={section.label} className="sidebar-section">
                 {/* Section title */}
                 <button
                   onClick={() => isOpen && toggleSection(section.label)}
                   className={cn(
-                    "flex items-center gap-3 w-full px-3 py-2 rounded-lg transition-colors",
-                    "hover:bg-sidebar-accent text-sidebar-foreground font-medium",
-                    "focus:outline-none focus:ring-2 focus:ring-sidebar-ring",
-                    !isOpen && "justify-center px-2"
+                    "sidebar-section-trigger",
+                    !isOpen && "sidebar-section-trigger--collapsed"
                   )}
                   aria-expanded={isOpen ? isSectionExpanded : undefined}
                   aria-label={!isOpen ? section.label : undefined}
                 >
-                  <section.icon className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
+                  <section.icon className="sidebar-section-icon" aria-hidden="true" />
                   {isOpen && (
                     <>
-                      <span className="flex-1 text-left text-sm">{section.label}</span>
+                      <span className="sidebar-section-label">{section.label}</span>
                       <ChevronDown 
                         className={cn(
-                          "h-4 w-4 transition-transform",
+                          "sidebar-chevron",
                           isSectionExpanded && "rotate-180"
                         )} 
                         aria-hidden="true"
@@ -143,7 +141,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
                 {/* Section items */}
                 {isOpen && isSectionExpanded && (
-                  <div className="mt-1 ml-4 pl-2 border-l border-sidebar-accent space-y-1">
+                  <div className="sidebar-items">
                     {section.items.map((item) => {
                       const isActive = currentPath === item.href;
                       return (
@@ -151,15 +149,14 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                           key={item.href}
                           href={item.href}
                           className={cn(
-                            "flex items-center gap-2 px-3 py-2 rounded-lg transition-colors text-sm",
-                            "focus:outline-none focus:ring-2 focus:ring-sidebar-ring",
+                            "sidebar-item",
                             isActive 
-                              ? "bg-sidebar-primary text-sidebar-primary-foreground font-medium" 
-                              : "hover:bg-sidebar-accent text-sidebar-foreground/80 hover:text-sidebar-foreground"
+                              ? "sidebar-item--active" 
+                              : "sidebar-item--inactive"
                           )}
                           aria-current={isActive ? "page" : undefined}
                         >
-                          <item.icon className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
+                          <item.icon className="sidebar-item-icon" aria-hidden="true" />
                           <span>{item.label}</span>
                         </a>
                       );

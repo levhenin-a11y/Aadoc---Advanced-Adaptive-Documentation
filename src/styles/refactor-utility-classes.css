@@ -1,0 +1,513 @@
+/*
+Section index
+1) App
+2) Sidebar
+3) Pages
+4) Forms
+5) Buttons
+6) Header
+7) Footer
+*/
+
+/* -------------------------------------------------- */
+/* 1) App */
+.app-shell {
+  @apply flex min-h-screen flex-col;
+}
+
+.app-body {
+  @apply relative flex flex-1;
+}
+
+.app-main {
+  @apply flex flex-1 flex-col overflow-auto transition-[padding] duration-base;
+}
+
+.app-main--sidebar-open {
+  @apply pl-64;
+}
+
+.app-main--sidebar-collapsed {
+  @apply pl-12 lg:pl-16;
+}
+
+.app-content {
+  @apply flex flex-1 flex-col p-4 md:p-6 lg:p-8;
+}
+
+.bg-app-gradient {
+  background-image: linear-gradient(to top, hsl(var(--background)), hsl(var(--primary)));
+}
+
+/* -------------------------------------------------- */
+/* 2) Sidebar */
+.sidebar-root {
+  @apply absolute left-0 top-0 z-50 h-full bg-sidebar text-sidebar-foreground transition-all duration-base;
+}
+
+.sidebar-root--open {
+  @apply w-full sm:w-64;
+}
+
+.sidebar-root--collapsed {
+  @apply w-12 lg:w-16;
+}
+
+.sidebar-frame {
+  @apply flex h-full flex-col overflow-hidden;
+}
+
+.sidebar-toggle-row {
+  @apply flex justify-end p-2;
+}
+
+.sidebar-toggle-btn {
+  @apply text-sidebar-foreground hover:bg-sidebar-accent focus:ring-2 focus:ring-sidebar-ring;
+}
+
+.sidebar-toggle-icon {
+  @apply h-5 w-5 transition-transform;
+}
+
+.sidebar-nav {
+  @apply flex-1 space-y-1 overflow-y-auto px-2 py-2;
+}
+
+.sidebar-nav--collapsed {
+  @apply hidden lg:block;
+}
+
+.sidebar-section {
+  @apply mb-2;
+}
+
+.sidebar-section-trigger {
+  @apply flex w-full items-center gap-3 rounded-lg px-3 py-2 font-medium text-sidebar-foreground transition-colors hover:bg-sidebar-accent focus:outline-none focus:ring-2 focus:ring-sidebar-ring;
+}
+
+.sidebar-section-trigger--collapsed {
+  @apply justify-center px-2;
+}
+
+.sidebar-section-icon {
+  @apply h-5 w-5 flex-shrink-0;
+}
+
+.sidebar-section-label {
+  @apply flex-1 text-left text-sm;
+}
+
+.sidebar-chevron {
+  @apply h-4 w-4 transition-transform;
+}
+
+.sidebar-items {
+  @apply mt-1 ml-4 space-y-1 border-l border-sidebar-accent pl-2;
+}
+
+.sidebar-item {
+  @apply flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-sidebar-ring;
+}
+
+.sidebar-item--active {
+  @apply bg-sidebar-primary font-medium text-sidebar-primary-foreground;
+}
+
+.sidebar-item--inactive {
+  @apply text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-foreground;
+}
+
+.sidebar-item-icon {
+  @apply h-4 w-4 flex-shrink-0;
+}
+
+/* -------------------------------------------------- */
+/* 3) Pages */
+.tagline-block {
+  @apply mb-8 text-center;
+}
+
+.tagline-title {
+  @apply text-xl font-medium text-primary-foreground md:text-2xl;
+}
+
+.action-grid {
+  @apply mx-auto grid max-w-5xl flex-1 gap-6 md:grid-cols-3;
+}
+
+.action-card {
+  @apply flex min-h-[360px] flex-col bg-card shadow-lg transition-shadow hover:shadow-xl;
+}
+
+.action-card-header {
+  @apply pb-4 pt-8 text-center;
+}
+
+.action-card-title {
+  @apply text-2xl font-bold tracking-wide text-ink-secondary;
+}
+
+.action-card-content {
+  @apply flex flex-1 flex-col items-center gap-6 px-8;
+}
+
+.action-card-icon-wrap {
+  @apply flex h-20 w-20 items-center justify-center rounded-full bg-primary;
+}
+
+.action-card-description {
+  @apply text-center text-sm leading-relaxed text-muted-foreground;
+}
+
+.action-card-permission {
+  @apply mt-auto flex items-center gap-1;
+}
+
+.action-card-permission-label {
+  @apply text-sm font-medium;
+}
+
+.action-card-info-btn {
+  @apply p-0.5;
+}
+
+.action-card-footer {
+  @apply justify-center pb-8 pt-4;
+}
+
+.action-card-cta {
+  @apply w-40 bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+.contact-page {
+  @apply flex flex-1 items-center justify-center p-6;
+}
+
+.contact-card {
+  @apply w-full max-w-lg border-border;
+}
+
+.contact-card-header {
+  @apply text-center;
+}
+
+.contact-card-title {
+  @apply font-serif text-2xl font-bold text-foreground md:text-3xl;
+}
+
+.contact-success {
+  @apply py-8 text-center font-medium text-success;
+}
+
+.login-page {
+  @apply flex min-h-screen flex-col bg-background;
+}
+
+.login-main {
+  @apply flex flex-1 items-center justify-center bg-primary p-4;
+}
+
+.login-shell {
+  @apply flex w-full max-w-4xl flex-col overflow-hidden rounded-xl shadow-2xl md:flex-row;
+}
+
+.login-visual {
+  @apply md:w-1/2;
+  background-color: hsl(var(--surface-tertiary));
+}
+
+.login-visual-image {
+  @apply h-48 w-full object-cover md:h-full;
+}
+
+.login-panel {
+  @apply flex flex-col justify-center bg-muted p-6 md:w-1/2 md:p-8;
+}
+
+.login-title-wrap {
+  @apply mb-6 p-0 text-center;
+}
+
+.login-title {
+  @apply font-serif text-2xl font-bold text-foreground md:text-3xl;
+}
+
+.login-card {
+  @apply border-0 bg-transparent shadow-none;
+}
+
+.login-remember {
+  @apply flex items-center space-x-2;
+}
+
+.login-remember-label {
+  @apply cursor-pointer text-sm font-normal text-foreground;
+}
+
+.login-submit {
+  @apply w-full bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-2 focus:ring-ring focus:ring-offset-2;
+}
+
+.login-footer {
+  @apply mt-6 flex flex-col gap-2 p-0;
+}
+
+.login-link {
+  @apply rounded text-sm text-muted-foreground transition-colors hover:text-primary focus:outline-none focus:ring-2 focus:ring-ring;
+}
+
+.notfound-page {
+  @apply flex min-h-screen items-center justify-center bg-muted;
+}
+
+.notfound-card {
+  @apply text-center;
+}
+
+.notfound-title {
+  @apply mb-4 text-4xl font-bold;
+}
+
+.notfound-text {
+  @apply mb-4 text-xl text-muted-foreground;
+}
+
+.notfound-link {
+  @apply text-primary underline hover:text-primary/90;
+}
+
+/* -------------------------------------------------- */
+/* 4) Forms */
+.contact-form {
+  @apply space-y-4;
+}
+
+.form-field {
+  @apply space-y-2;
+}
+
+.form-label {
+  @apply text-foreground;
+}
+
+.form-control {
+  @apply border-border bg-card focus:ring-2 focus:ring-ring;
+}
+
+.form-textarea {
+  @apply min-h-[120px];
+}
+
+.contact-actions {
+  @apply flex justify-end gap-4 pt-2;
+}
+
+.settings-panel {
+  @apply mx-auto w-full max-w-2xl space-y-8;
+}
+
+.settings-section {
+  @apply space-y-2;
+}
+
+.settings-label {
+  @apply text-base font-semibold text-primary-foreground;
+}
+
+.settings-input {
+  @apply bg-card text-card-foreground border-border;
+}
+
+.settings-input--disabled {
+  @apply opacity-70;
+}
+
+.settings-help {
+  @apply text-xs text-primary-foreground/60;
+}
+
+.settings-row {
+  @apply flex items-center justify-between;
+}
+
+.settings-row-text {
+  @apply space-y-0.5;
+}
+
+.settings-row-label {
+  @apply text-base font-semibold text-primary-foreground;
+}
+
+.settings-row-value {
+  @apply text-sm text-primary-foreground/70;
+}
+
+.settings-actions {
+  @apply flex justify-end gap-4 pt-4;
+}
+
+.profile-section {
+  @apply space-y-2;
+}
+
+.profile-title {
+  @apply text-base font-semibold text-primary-foreground;
+}
+
+.profile-row {
+  @apply flex items-center gap-6;
+}
+
+.profile-avatar {
+  @apply h-20 w-20 border-2 border-border;
+}
+
+.profile-fallback {
+  @apply bg-primary text-primary-foreground text-lg;
+}
+
+.profile-actions {
+  @apply space-y-2;
+}
+
+.profile-upload-btn {
+  @apply border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10;
+}
+
+.profile-hint {
+  @apply text-xs text-primary-foreground/60;
+}
+
+/* -------------------------------------------------- */
+/* 5) Buttons */
+.btn-secondary {
+  @apply border-border text-foreground hover:bg-muted;
+}
+
+.btn-primary {
+  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+
+.btn-outline-light {
+  @apply border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10;
+}
+
+.btn-accent {
+  @apply bg-accent text-accent-foreground hover:bg-accent/90;
+}
+
+/* -------------------------------------------------- */
+/* 6) Header */
+.header-root {
+  @apply bg-header text-header-foreground;
+}
+
+.header-inner {
+  @apply flex items-center gap-3 px-4 py-3;
+}
+
+.header-brand {
+  @apply flex items-center gap-3;
+}
+
+.header-logo {
+  @apply h-12 w-12 rounded object-cover;
+}
+
+.header-title {
+  @apply font-serif text-lg font-bold;
+}
+
+.header-subtitle {
+  @apply hidden text-xs opacity-80 sm:block;
+}
+
+.header-nav-desktop {
+  @apply hidden nav:flex nav:flex-1 nav:justify-center;
+}
+
+.header-nav-list {
+  @apply flex items-center gap-6;
+}
+
+.header-nav-link {
+  @apply text-sm text-header-foreground transition-colors hover:text-header-foreground/80;
+}
+
+.header-separator {
+  @apply hidden h-6 w-0.5 bg-header-foreground/50 nav:block;
+}
+
+.header-actions {
+  @apply ml-auto flex items-center gap-3;
+}
+
+.header-icon-btn {
+  @apply text-header-foreground hover:bg-header-foreground/10;
+}
+
+.header-account-btn {
+  @apply flex cursor-pointer items-center gap-2 border-none bg-transparent p-0 transition-opacity hover:opacity-80;
+}
+
+.header-account-name {
+  @apply hidden text-sm sm:inline;
+}
+
+.header-avatar {
+  @apply h-8 w-8 border-2 border-header-foreground/20;
+}
+
+.header-avatar-fallback {
+  @apply bg-primary-foreground text-xs text-primary;
+}
+
+.header-mobile-nav {
+  @apply border-t border-header-foreground/10 bg-header/90 nav:hidden;
+}
+
+.header-mobile-inner {
+  @apply flex items-center justify-center px-4 py-2;
+}
+
+.header-mobile-menu-btn {
+  @apply text-header-foreground hover:bg-header-foreground/10 focus:ring-2 focus:ring-header-foreground/50;
+}
+
+.header-mobile-menu-icon {
+  @apply h-16 w-16;
+}
+
+.header-overlay {
+  @apply fixed inset-0 z-[60] flex flex-col bg-header text-header-foreground nav:hidden;
+}
+
+.header-overlay-close-row {
+  @apply flex justify-end p-4;
+}
+
+.header-overlay-nav {
+  @apply flex flex-1 flex-col items-center justify-center gap-8;
+}
+
+.header-overlay-link {
+  @apply font-serif text-2xl transition-colors hover:text-header-foreground/80;
+}
+
+/* -------------------------------------------------- */
+/* 7) Footer */
+.footer-root {
+  @apply bg-primary-foreground px-6 py-4;
+}
+
+.footer-nav {
+  @apply flex flex-wrap items-center justify-center gap-2 text-sm text-primary;
+}
+
+.footer-separator {
+  @apply h-4 bg-primary/30;
+}
+
+.footer-link {
+  @apply rounded underline underline-offset-2 transition-colors hover:text-primary/70 focus:outline-none focus:ring-2 focus:ring-ring;
+}
