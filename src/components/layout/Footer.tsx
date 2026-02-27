@@ -12,9 +12,9 @@ const Footer = () => {
           Contact
         </Link>
         <Separator orientation="vertical" className="h-4 bg-primary/30" aria-hidden="true" />
-        <a href="#disclaimer" className="underline underline-offset-2 hover:text-primary/70 transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded">
+        <Link to="/disclaimer" className="underline underline-offset-2 hover:text-primary/70 transition-colors focus:outline-none focus:ring-2 focus:ring-ring rounded">
           Disclaimer
-        </a>
+        </Link>
       </nav>
     </footer>;
 };
