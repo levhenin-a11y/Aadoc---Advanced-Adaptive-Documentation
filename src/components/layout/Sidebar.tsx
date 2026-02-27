@@ -19,7 +19,7 @@ const menuSections: MenuSection[] = [
     icon: Home,
     label: "Accueil",
     items: [
-      { label: "Tableau de bord", href: "/", icon: Home },
+      { label: "Tableau de bord", href: "/dashboard", icon: Home },
       { label: "Activité récente", href: "/activity", icon: FileText },
     ],
   },
@@ -116,7 +116,16 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
               <div key={section.label} className="mb-2">
                 {/* Section title */}
                 <button
-                  onClick={() => isOpen && toggleSection(section.label)}
+                  onClick={() => {
+                    if (!isOpen) {
+                      onClose();
+                      setExpandedSections((prev) =>
+                        prev.includes(section.label) ? prev : [...prev, section.label]
+                      );
+                    } else {
+                      toggleSection(section.label);
+                    }
+                  }}
                   className={cn(
                     "flex items-center gap-3 w-full px-3 py-2 rounded-lg transition-colors",
                     "hover:bg-sidebar-accent text-sidebar-foreground font-medium",

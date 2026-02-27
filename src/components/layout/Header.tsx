@@ -58,7 +58,7 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
       <header className="bg-header text-header-foreground" role="banner">
         <div className="flex items-center gap-3 px-4 py-3">
           {/* Logo and Brand */}
-          <div className="flex items-center gap-3">
+          <a href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
             <img 
               src={logo} 
               alt="Logo Aadoc - Retour à l'accueil" 
@@ -68,7 +68,7 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
               <h1 className="text-lg font-bold font-serif">Aadoc</h1>
               <p className="hidden sm:block text-xs opacity-80">Adapted Advanced Documentation</p>
             </div>
-          </div>
+          </a>
 
           {/* Desktop/Tablet Navigation - visible on nav (830px) and up */}
           <nav className="hidden nav:flex nav:flex-1 nav:justify-center" aria-label="Navigation principale">
