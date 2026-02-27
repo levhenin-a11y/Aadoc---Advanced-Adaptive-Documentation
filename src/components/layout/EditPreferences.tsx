@@ -89,85 +89,87 @@ const EditPreferences = () => {
   }, [savedPrefs]);
 
   return (
-    <div className="max-w-2xl mx-auto w-full space-y-8">
-      {/* Page d'accueil */}
-      <div className="space-y-2">
-        <Label htmlFor="homepage" className="text-base font-semibold text-primary-foreground">
-          Page d'accueil
-        </Label>
-        <Select value={prefs.homePage} onValueChange={(v) => setPrefs((p) => ({ ...p, homePage: v }))}>
-          <SelectTrigger id="homepage" className="bg-card text-card-foreground border-border">
-            <SelectValue placeholder="Choisir la page d'accueil" />
-          </SelectTrigger>
-          <SelectContent>
-            {pages.map((page) => (
-              <SelectItem key={page.value} value={page.value}>
-                {page.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-
-      {/* Langue */}
-      <div className="space-y-2">
-        <Label htmlFor="language" className="text-base font-semibold text-primary-foreground">
-          Langue
-        </Label>
-        <Select value={prefs.language} onValueChange={(v) => setPrefs((p) => ({ ...p, language: v }))}>
-          <SelectTrigger id="language" className="bg-card text-card-foreground border-border">
-            <SelectValue placeholder="Choisir la langue" />
-          </SelectTrigger>
-          <SelectContent>
-            {languages.map((lang) => (
-              <SelectItem key={lang.value} value={lang.value}>
-                {lang.label} ({lang.value})
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-
-      {/* Mode */}
-      <div className="flex items-center justify-between">
-        <div className="space-y-0.5">
-          <Label className="text-base font-semibold text-primary-foreground">Mode</Label>
-          <p className="text-sm text-primary-foreground/70">
-            {prefs.isDarkMode ? "Dark" : "Light"}
-          </p>
-        </div>
-        <Switch
-          checked={prefs.isDarkMode}
-          onCheckedChange={(c) => setPrefs((p) => ({ ...p, isDarkMode: c }))}
-          aria-label="Basculer entre mode Light et Dark"
-        />
-      </div>
-
-      {/* État Menu de gauche */}
-      <div className="flex items-center justify-between">
-        <div className="space-y-0.5">
-          <Label className="text-base font-semibold text-primary-foreground">
-            État Menu de gauche
+    <div className="max-w-2xl mx-auto w-full">
+      <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6 space-y-8">
+        {/* Page d'accueil */}
+        <div className="space-y-2">
+          <Label htmlFor="homepage" className="text-base font-semibold text-card-foreground">
+            Page d'accueil
           </Label>
-          <p className="text-sm text-primary-foreground/70">
-            {prefs.isSidebarOpen ? "Ouvert" : "Fermé"}
-          </p>
+          <Select value={prefs.homePage} onValueChange={(v) => setPrefs((p) => ({ ...p, homePage: v }))}>
+            <SelectTrigger id="homepage" className="bg-card text-card-foreground border-border">
+              <SelectValue placeholder="Choisir la page d'accueil" />
+            </SelectTrigger>
+            <SelectContent>
+              {pages.map((page) => (
+                <SelectItem key={page.value} value={page.value}>
+                  {page.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
-        <Switch
-          checked={prefs.isSidebarOpen}
-          onCheckedChange={(c) => setPrefs((p) => ({ ...p, isSidebarOpen: c }))}
-          aria-label="Basculer le menu de gauche ouvert ou fermé par défaut"
-        />
-      </div>
 
-      {/* Boutons Sauvegarder / Annuler */}
-      <div className="flex justify-end gap-4 pt-4">
-        <Button variant="outline" onClick={handleCancel} className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
-          Annuler
-        </Button>
-        <Button onClick={handleSave} className="bg-accent text-accent-foreground hover:bg-accent/90">
-          Sauvegarder
-        </Button>
+        {/* Langue */}
+        <div className="space-y-2">
+          <Label htmlFor="language" className="text-base font-semibold text-card-foreground">
+            Langue
+          </Label>
+          <Select value={prefs.language} onValueChange={(v) => setPrefs((p) => ({ ...p, language: v }))}>
+            <SelectTrigger id="language" className="bg-card text-card-foreground border-border">
+              <SelectValue placeholder="Choisir la langue" />
+            </SelectTrigger>
+            <SelectContent>
+              {languages.map((lang) => (
+                <SelectItem key={lang.value} value={lang.value}>
+                  {lang.label} ({lang.value})
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Mode */}
+        <div className="flex items-center justify-between">
+          <div className="space-y-0.5">
+            <Label className="text-base font-semibold text-card-foreground">Mode</Label>
+            <p className="text-sm text-muted-foreground">
+              {prefs.isDarkMode ? "Dark" : "Light"}
+            </p>
+          </div>
+          <Switch
+            checked={prefs.isDarkMode}
+            onCheckedChange={(c) => setPrefs((p) => ({ ...p, isDarkMode: c }))}
+            aria-label="Basculer entre mode Light et Dark"
+          />
+        </div>
+
+        {/* État Menu de gauche */}
+        <div className="flex items-center justify-between">
+          <div className="space-y-0.5">
+            <Label className="text-base font-semibold text-card-foreground">
+              État Menu de gauche
+            </Label>
+            <p className="text-sm text-muted-foreground">
+              {prefs.isSidebarOpen ? "Ouvert" : "Fermé"}
+            </p>
+          </div>
+          <Switch
+            checked={prefs.isSidebarOpen}
+            onCheckedChange={(c) => setPrefs((p) => ({ ...p, isSidebarOpen: c }))}
+            aria-label="Basculer le menu de gauche ouvert ou fermé par défaut"
+          />
+        </div>
+
+        {/* Boutons Sauvegarder / Annuler */}
+        <div className="flex justify-end gap-4 pt-4">
+          <Button variant="outline" onClick={handleCancel} className="border-border text-card-foreground hover:bg-muted">
+            Annuler
+          </Button>
+          <Button onClick={handleSave} className="bg-accent text-accent-foreground hover:bg-accent/90">
+            Sauvegarder
+          </Button>
+        </div>
       </div>
     </div>
   );
