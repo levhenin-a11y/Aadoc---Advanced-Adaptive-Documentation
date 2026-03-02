@@ -90,84 +90,86 @@ const EditPreferences = () => {
 
   return (
     <div className="settings-panel">
-      {/* Page d'accueil */}
-      <div className="settings-section">
-        <Label htmlFor="homepage" className="settings-label">
-          Page d'accueil
-        </Label>
-        <Select value={prefs.homePage} onValueChange={(v) => setPrefs((p) => ({ ...p, homePage: v }))}>
-          <SelectTrigger id="homepage" className="settings-input">
-            <SelectValue placeholder="Choisir la page d'accueil" />
-          </SelectTrigger>
-          <SelectContent>
-            {pages.map((page) => (
-              <SelectItem key={page.value} value={page.value}>
-                {page.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-
-      {/* Langue */}
-      <div className="settings-section">
-        <Label htmlFor="language" className="settings-label">
-          Langue
-        </Label>
-        <Select value={prefs.language} onValueChange={(v) => setPrefs((p) => ({ ...p, language: v }))}>
-          <SelectTrigger id="language" className="settings-input">
-            <SelectValue placeholder="Choisir la langue" />
-          </SelectTrigger>
-          <SelectContent>
-            {languages.map((lang) => (
-              <SelectItem key={lang.value} value={lang.value}>
-                {lang.label} ({lang.value})
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-
-      {/* Mode */}
-      <div className="settings-row">
-        <div className="settings-row-text">
-          <Label className="settings-row-label">Mode</Label>
-          <p className="settings-row-value">
-            {prefs.isDarkMode ? "Dark" : "Light"}
-          </p>
-        </div>
-        <Switch
-          checked={prefs.isDarkMode}
-          onCheckedChange={(c) => setPrefs((p) => ({ ...p, isDarkMode: c }))}
-          aria-label="Basculer entre mode Light et Dark"
-        />
-      </div>
-
-      {/* État Menu de gauche */}
-      <div className="settings-row">
-        <div className="settings-row-text">
-          <Label className="settings-row-label">
-            État Menu de gauche
+      <div className="settings-card">
+        {/* Page d'accueil */}
+        <div className="settings-section">
+          <Label htmlFor="homepage" className="settings-label">
+            Page d'accueil
           </Label>
-          <p className="settings-row-value">
-            {prefs.isSidebarOpen ? "Ouvert" : "Fermé"}
-          </p>
+          <Select value={prefs.homePage} onValueChange={(v) => setPrefs((p) => ({ ...p, homePage: v }))}>
+            <SelectTrigger id="homepage" className="settings-input">
+              <SelectValue placeholder="Choisir la page d'accueil" />
+            </SelectTrigger>
+            <SelectContent>
+              {pages.map((page) => (
+                <SelectItem key={page.value} value={page.value}>
+                  {page.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
-        <Switch
-          checked={prefs.isSidebarOpen}
-          onCheckedChange={(c) => setPrefs((p) => ({ ...p, isSidebarOpen: c }))}
-          aria-label="Basculer le menu de gauche ouvert ou fermé par défaut"
-        />
-      </div>
 
-      {/* Boutons Sauvegarder / Annuler */}
-      <div className="settings-actions">
-        <Button variant="outline" onClick={handleCancel} className="btn-outline-light">
-          Annuler
-        </Button>
-        <Button onClick={handleSave} className="btn-accent">
-          Sauvegarder
-        </Button>
+        {/* Langue */}
+        <div className="settings-section">
+          <Label htmlFor="language" className="settings-label">
+            Langue
+          </Label>
+          <Select value={prefs.language} onValueChange={(v) => setPrefs((p) => ({ ...p, language: v }))}>
+            <SelectTrigger id="language" className="settings-input">
+              <SelectValue placeholder="Choisir la langue" />
+            </SelectTrigger>
+            <SelectContent>
+              {languages.map((lang) => (
+                <SelectItem key={lang.value} value={lang.value}>
+                  {lang.label} ({lang.value})
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Mode */}
+        <div className="settings-row">
+          <div className="settings-row-text">
+            <Label className="settings-row-label">Mode</Label>
+            <p className="settings-row-value">
+              {prefs.isDarkMode ? "Dark" : "Light"}
+            </p>
+          </div>
+          <Switch
+            checked={prefs.isDarkMode}
+            onCheckedChange={(c) => setPrefs((p) => ({ ...p, isDarkMode: c }))}
+            aria-label="Basculer entre mode Light et Dark"
+          />
+        </div>
+
+        {/* État Menu de gauche */}
+        <div className="settings-row">
+          <div className="settings-row-text">
+            <Label className="settings-row-label">
+              État Menu de gauche
+            </Label>
+            <p className="settings-row-value">
+              {prefs.isSidebarOpen ? "Ouvert" : "Fermé"}
+            </p>
+          </div>
+          <Switch
+            checked={prefs.isSidebarOpen}
+            onCheckedChange={(c) => setPrefs((p) => ({ ...p, isSidebarOpen: c }))}
+            aria-label="Basculer le menu de gauche ouvert ou fermé par défaut"
+          />
+        </div>
+
+        {/* Boutons Sauvegarder / Annuler */}
+        <div className="settings-actions">
+          <Button variant="outline" onClick={handleCancel} className="btn-outline-light">
+            Annuler
+          </Button>
+          <Button onClick={handleSave} className="btn-accent">
+            Sauvegarder
+          </Button>
+        </div>
       </div>
     </div>
   );

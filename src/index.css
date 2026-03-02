@@ -66,6 +66,10 @@
     --ring: 229 68% 55%; /* hsl(229, 68%, 55%) */
     
     --radius: 0.5rem;
+    --radius-sm: calc(var(--radius) - 2px);
+    --radius-md: calc(var(--radius) - 1px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
     
     /* Sidebar - Aadoc blue theme */
     --sidebar-background: 229 68% 55%; /* hsl(229, 68%, 55%) */
