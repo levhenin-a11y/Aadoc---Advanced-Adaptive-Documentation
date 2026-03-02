@@ -6,7 +6,7 @@ const Account = () => {
     <MainLayout>
       {/* Title */}
       <div className="text-center mb-8">
-        <h2 className="text-xl md:text-2xl font-medium text-primary-foreground">
+        <h2 className="tagline-title">
           Account
         </h2>
       </div>

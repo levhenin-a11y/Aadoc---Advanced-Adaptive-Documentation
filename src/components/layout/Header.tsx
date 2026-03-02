@@ -47,9 +47,9 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
 
   const navLinks = [
     { label: "Account", href: "/login" },
-    { label: "Documentation", href: "/documentation" },
+    { label: "Documentation", href: "https://www.vhenin.be", target: "_blank" },
     { label: "Preferences", href: "/preferences" },
-    { label: "Support", href: "support" },
+    { label: "Support", href: "https://www.vhenin.be", target: "_blank" },
     { label: "Delegations", href: "/delegations" },
   ];
 
@@ -77,6 +77,8 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
                 <li key={link.href}>
                   <a 
                     href={link.href} 
+                    target={link.target}
+                    rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
                     className="header-nav-link"
                   >
                     {link.label}
@@ -170,6 +172,8 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
               <a
                 key={link.href}
                 href={link.href}
+                target={link.target}
+                rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
                 className="header-overlay-link"
                 onClick={() => setIsMenuOpen(false)}
               >
