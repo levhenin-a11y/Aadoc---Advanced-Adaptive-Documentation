@@ -58,65 +58,65 @@ const EditAccount = () => {
       />
 
       {/* Login */}
-      <div className="settings-section">
-        <Label htmlFor="login" className="settings-label">
+      <div className="space-y-2">
+        <Label htmlFor="login" className="text-base font-semibold text-primary-foreground">
           Login
         </Label>
         <Input
           id="login"
           value={account.login}
           disabled
-          className="settings-input settings-input--disabled"
+          className="bg-card text-card-foreground border-border opacity-70"
         />
-        <p className="settings-help">
+        <p className="text-xs text-primary-foreground/60">
           Vous devez être MANAGER afin de modifier ce champ
         </p>
       </div>
 
       {/* Entité hiérarchique */}
-      <div className="settings-section">
-        <Label htmlFor="entity" className="settings-label">
+      <div className="space-y-2">
+        <Label htmlFor="entity" className="text-base font-semibold text-primary-foreground">
           Entité hiérarchique
         </Label>
         <Input
           id="entity"
           value={account.entity}
           disabled
-          className="settings-input settings-input--disabled"
+          className="bg-card text-card-foreground border-border opacity-70"
         />
-        <p className="settings-help">
+        <p className="text-xs text-primary-foreground/60">
           Vous devez être MANAGER afin de modifier ce champ
         </p>
       </div>
 
       {/* Visibilité */}
-      <div className="settings-section">
-        <Label htmlFor="visibility" className="settings-label">
+      <div className="space-y-2">
+        <Label htmlFor="visibility" className="text-base font-semibold text-primary-foreground">
           Visibilité
         </Label>
         <Input
           id="visibility"
           value={account.visibility}
           disabled
-          className="settings-input settings-input--disabled"
+          className="bg-card text-card-foreground border-border opacity-70"
         />
-        <p className="settings-help">
+        <p className="text-xs text-primary-foreground/60">
           DG, UNIT, SERVICE, SECTOR. Plus votre niveau est haut, plus vous pourrez voir de documents dans la Base de Données. Seul votre MANAGER peut modifier ce niveau
         </p>
       </div>
 
       {/* Boutons Sauvegarder / Annuler */}
-      <div className="settings-actions">
+      <div className="flex justify-end gap-4 pt-4">
         <Button
           variant="outline"
           onClick={handleCancel}
-          className="btn-outline-light"
+          className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
         >
           Annuler
         </Button>
         <Button
           onClick={handleSave}
-          className="btn-accent"
+          className="bg-accent text-accent-foreground hover:bg-accent/90"
         >
           Sauvegarder
         </Button>

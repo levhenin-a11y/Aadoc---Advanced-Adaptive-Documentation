@@ -9,6 +9,9 @@ import Preferences from "./pages/Preferences";
 import Account from "./pages/Account";
 import Register from "./pages/Register";
 import Contact from "./pages/Contact";
+import Dashboard from "./pages/Dashboard";
+import AdvancedSearch from "./pages/AdvancedSearch";
+import Disclaimer from "./pages/Disclaimer";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +29,9 @@ const App = () => (
           <Route path="/account" element={<Account />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/search" element={<AdvancedSearch />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

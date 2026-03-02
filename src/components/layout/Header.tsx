@@ -58,7 +58,7 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
       <header className="header-root" role="banner">
         <div className="header-inner">
           {/* Logo and Brand */}
-          <div className="header-brand">
+          <a href="/" className="header-brand hover:opacity-90 transition-opacity">
             <img 
               src={logo} 
               alt="Logo Aadoc - Retour à l'accueil" 
@@ -68,7 +68,7 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
               <h1 className="header-title">Aadoc</h1>
               <p className="header-subtitle">Adapted Advanced Documentation</p>
             </div>
-          </div>
+          </a>
 
           {/* Desktop/Tablet Navigation - visible on nav (830px) and up */}
           <nav className="header-nav-desktop" aria-label="Navigation principale">

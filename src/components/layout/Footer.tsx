@@ -12,9 +12,9 @@ const Footer = () => {
           Contact
         </Link>
         <Separator orientation="vertical" className="footer-separator" aria-hidden="true" />
-        <a href="#disclaimer" className="footer-link">
+        <a href="/disclaimer" className="footer-link">
           Disclaimer
-        </a>
+        </Link>
       </nav>
     </footer>;
 };
