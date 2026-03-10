@@ -50,23 +50,23 @@ const ProfilePicture = ({ avatarUrl, fallbackText, onAvatarChange }: ProfilePict
   );
 
   return (
-    <div className="space-y-2">
-      <Label className="text-base font-semibold text-primary-foreground">
+    <div className="profile-section">
+      <Label className="profile-title">
         Photo de profil
       </Label>
-      <div className="flex items-center gap-6">
-        <Avatar className="h-20 w-20 border-2 border-border">
+      <div className="profile-row">
+        <Avatar className="profile-avatar">
           <AvatarImage src={avatarUrl} alt="Photo de profil" />
-          <AvatarFallback className="bg-primary text-primary-foreground text-lg">
+          <AvatarFallback className="profile-fallback">
             {fallbackText}
           </AvatarFallback>
         </Avatar>
-        <div className="space-y-2">
+        <div className="profile-actions">
           <Button
             type="button"
             variant="outline"
             onClick={() => fileInputRef.current?.click()}
-            className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+            className="profile-upload-btn"
           >
             <Upload className="mr-2 h-4 w-4" />
             Parcourir
@@ -80,7 +80,7 @@ const ProfilePicture = ({ avatarUrl, fallbackText, onAvatarChange }: ProfilePict
           />
         </div>
       </div>
-      <p className="text-xs text-primary-foreground/60">
+      <p className="profile-hint">
         Uniquement JPEG, PNG ou BMP, max. 500Ko
       </p>
     </div>

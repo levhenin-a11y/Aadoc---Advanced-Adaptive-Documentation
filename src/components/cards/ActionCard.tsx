@@ -35,27 +35,27 @@ const ActionCard = ({
   className,
 }: ActionCardProps) => {
   return (
-    <Card className={cn("bg-card shadow-lg hover:shadow-xl transition-shadow min-h-[360px] flex flex-col", className)}>
-      <CardHeader className="text-center pb-4 pt-8">
-        <h3 className="text-2xl font-bold tracking-wide text-ink-secondary">{title}</h3>
+    <Card className={cn("action-card", className)}>
+      <CardHeader className="action-card-header">
+        <h3 className="action-card-title">{title}</h3>
       </CardHeader>
       
-      <CardContent className="flex flex-col items-center gap-6 px-8 flex-1">
-        <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center">
+      <CardContent className="action-card-content">
+        <div className="action-card-icon-wrap">
           {icon}
         </div>
         
-        <p className="text-center text-muted-foreground text-sm leading-relaxed">
+        <p className="action-card-description">
           {description}
         </p>
         
-        <div className="flex items-center gap-1 mt-auto">
-          <span className={cn("text-sm font-medium", permissionColors[permissionType])}>
+        <div className="action-card-permission">
+          <span className={cn("action-card-permission-label", permissionColors[permissionType])}>
             {permissionLabel}
           </span>
           <Tooltip>
             <TooltipTrigger asChild>
-              <button className="p-0.5">
+              <button className="action-card-info-btn">
                 <Info className="h-4 w-4 text-primary" />
               </button>
             </TooltipTrigger>
@@ -66,10 +66,10 @@ const ActionCard = ({
         </div>
       </CardContent>
       
-      <CardFooter className="justify-center pb-8 pt-4">
+      <CardFooter className="action-card-footer">
         <Button 
           onClick={onAction}
-          className="w-40 bg-primary text-primary-foreground hover:bg-primary/90"
+          className="action-card-cta"
         >
           Go!
         </Button>

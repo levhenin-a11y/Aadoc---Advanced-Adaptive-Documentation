@@ -33,45 +33,45 @@ const Contact = () => {
 
   return (
     <MainLayout>
-      <div className="flex-1 flex items-center justify-center p-6">
-        <Card className="w-full max-w-lg border-border">
-          <CardHeader className="text-center">
-            <CardTitle className="text-2xl md:text-3xl font-bold text-foreground font-serif">
+      <div className="contact-page">
+        <Card className="contact-card">
+          <CardHeader className="contact-card-header">
+            <CardTitle className="contact-card-title">
               Contact
             </CardTitle>
           </CardHeader>
 
           <CardContent>
             {submitted ? (
-              <p className="text-center text-success font-medium py-8">
+              <p className="contact-success">
                 Votre message nous a bien été envoyé. Nous y répondrons dans les plus brefs délais. Merci.
               </p>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="contact-nom" className="text-foreground">Nom</Label>
+              <form onSubmit={handleSubmit} className="contact-form">
+                <div className="form-field">
+                  <Label htmlFor="contact-nom" className="form-label">Nom</Label>
                   <Input
                     id="contact-nom"
                     value={nom}
                     onChange={(e) => setNom(e.target.value)}
                     placeholder="Votre nom"
-                    className="bg-card border-border focus:ring-2 focus:ring-ring"
+                    className="form-control"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="contact-prenom" className="text-foreground">Prénom</Label>
+                <div className="form-field">
+                  <Label htmlFor="contact-prenom" className="form-label">Prénom</Label>
                   <Input
                     id="contact-prenom"
                     value={prenom}
                     onChange={(e) => setPrenom(e.target.value)}
                     placeholder="Votre prénom"
-                    className="bg-card border-border focus:ring-2 focus:ring-ring"
+                    className="form-control"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="contact-message" className="text-foreground">
+                <div className="form-field">
+                  <Label htmlFor="contact-message" className="form-label">
                     Message <span className="text-destructive">*</span>
                   </Label>
                   <Textarea
@@ -79,23 +79,23 @@ const Contact = () => {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Écrivez votre message ici..."
-                    className="bg-card border-border focus:ring-2 focus:ring-ring min-h-[120px]"
+                    className="form-control form-textarea"
                     required
                   />
                 </div>
 
-                <div className="flex justify-end gap-4 pt-2">
+                <div className="contact-actions">
                   <Button
                     type="button"
                     variant="outline"
                     onClick={handleCancel}
-                    className="border-border text-foreground hover:bg-muted"
+                    className="btn-secondary"
                   >
                     Cancel
                   </Button>
                   <Button
                     type="submit"
-                    className="bg-primary text-primary-foreground hover:bg-primary/90"
+                    className="btn-primary"
                   >
                     Envoyer
                   </Button>

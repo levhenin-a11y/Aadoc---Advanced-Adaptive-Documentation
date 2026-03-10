@@ -6,7 +6,7 @@ const Preferences = () => {
     <MainLayout>
       {/* Title */}
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-serif font-bold text-primary-foreground mb-6">
+        <h2 className="tagline-title">
           Préférences
         </h2>
       </div>

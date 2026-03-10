@@ -49,8 +49,8 @@ const EditAccount = () => {
   }, [savedAccount]);
 
   return (
-    <div className="max-w-2xl mx-auto w-full">
-      <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6 space-y-8">
+    <div className="settings-panel">
+      <div className="settings-card">
         {/* Photo de profil */}
         <ProfilePicture
           avatarUrl={account.avatarUrl}

@@ -96,11 +96,34 @@ export default {
           DEFAULT: "hsl(var(--footer-background))",
           foreground: "hsl(var(--footer-foreground))",
         },
+        // NEW SEMANTIC TOKENS
+        "surface": "hsl(var(--surface) / <alpha-value>)",
+        "surface-alt": "hsl(var(--surface-alt) / <alpha-value>)",
+        "on-surface": "hsl(var(--on-surface) / <alpha-value>)",
+        "primary-hover": "hsl(var(--primary-hover) / <alpha-value>)",
+        "primary-active": "hsl(var(--primary-active) / <alpha-value>)",
+        "secondary-hover": "hsl(var(--secondary-hover) / <alpha-value>)",
+        "danger": "hsl(var(--danger) / <alpha-value>)",
+        "success": "hsl(var(--success) / <alpha-value>)",
+        "warning": "hsl(var(--warning) / <alpha-value>)",
+      },
+      spacing: {
+        "xs": "var(--spacing-xs)",
+        "sm": "var(--spacing-sm)",
+        "md": "var(--spacing-md)",
+        "lg": "var(--spacing-lg)",
+        "xl": "var(--spacing-xl)",
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        "sm": "var(--radius-sm)",
+        "md": "var(--radius-md)",
+        "lg": "var(--radius-lg)",
+        "xl": "var(--radius-xl)",
+      },
+      transitionDuration: {
+        "fast": "var(--duration-fast)",
+        "base": "var(--duration-base)",
+        "slow": "var(--duration-slow)",
       },
       keyframes: {
         "accordion-down": {
