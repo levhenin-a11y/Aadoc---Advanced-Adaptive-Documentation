@@ -27,9 +27,9 @@ const menuSections: MenuSection[] = [
     icon: FileSearch,
     label: "Consulter",
     items: [
-      { label: "Base documentaire", href: "/documents", icon: Database },
+      { label: "Bases documentaires", href: "/documents", icon: Database },
       { label: "Archives", href: "/archives", icon: FolderOpen },
-      { label: "Recherche avancée", href: "/search", icon: Search },
+      { label: "Recherches avancées", href: "/search", icon: Search },
     ],
   },
   {
