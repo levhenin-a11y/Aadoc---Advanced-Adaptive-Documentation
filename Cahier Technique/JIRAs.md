@@ -22,7 +22,7 @@ Les JIRA's sont bien distincts: entre ceux dans __Lovable__ et ceux dans __Visua
 ### 2.1 Linkage
 - [x] Menu Supérieur: Documentation et Support: liens *lambda*
 - [ ] Harmonisation boutons: BASE : Contact
-- [ ] Harmonisation H2: BASE : centré ou à gauche?
+- [x] Harmonisation H2: BASE : centré ou à gauche?
 
 ### 2.2 Divers
 - [ ] Activités récentes avec 's'
