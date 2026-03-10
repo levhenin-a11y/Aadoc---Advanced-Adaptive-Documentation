@@ -13,8 +13,9 @@ Les JIRA's sont bien distincts: entre ceux dans __Lovable__ et ceux dans __Visua
 - [ ] Menu de Gauche: Signature électronique, Attributions, Templates (supprimer rechercher un workflow et changement d'ordre et e-signataires par Signature électronique)
 - [ ] Menu de Gauche: Notifications
 
-### 1.1 Ajouts
-- [ ] Switch langues
+### 1.1 Ajouts/Changements
+- [X] Switch langues
+- [ ] Comportement Menu de Gauche: doit rester ouvert que je clique sur un sous-menu.
 
 ## 2 IN VSC
 ===========
