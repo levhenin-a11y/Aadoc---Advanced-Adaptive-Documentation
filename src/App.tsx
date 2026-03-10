@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
 import AdvancedSearch from "./pages/AdvancedSearch";
 import Disclaimer from "./pages/Disclaimer";
+import RecentActivities from "./pages/RecentActivities";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
