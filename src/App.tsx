@@ -13,6 +13,8 @@ import Dashboard from "./pages/Dashboard";
 import AdvancedSearch from "./pages/AdvancedSearch";
 import Disclaimer from "./pages/Disclaimer";
 import RecentActivities from "./pages/RecentActivities";
+import Documents from "./pages/Documents";
+import Archives from "./pages/Archives";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
