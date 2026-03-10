@@ -20,7 +20,7 @@ const menuSections: MenuSection[] = [
     label: "Accueil",
     items: [
       { label: "Tableau de bord", href: "/dashboard", icon: Home },
-      { label: "Activité récente", href: "/activity", icon: FileText },
+      { label: "Activités récentes", href: "/recent-activities", icon: FileText },
     ],
   },
   {

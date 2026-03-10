@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
 import AdvancedSearch from "./pages/AdvancedSearch";
 import Disclaimer from "./pages/Disclaimer";
+import RecentActivities from "./pages/RecentActivities";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/search" element={<AdvancedSearch />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/recent-activities" element={<RecentActivities />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
