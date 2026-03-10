@@ -466,6 +466,10 @@ Section index
   @apply bg-primary-foreground text-xs text-primary;
 }
 
+.header-lang-trigger {
+  @apply h-8 w-auto min-w-[4.5rem] gap-1.5 border-header-foreground/20 bg-transparent text-sm text-header-foreground focus:ring-header-foreground/30;
+}
+
 .header-mobile-nav {
   @apply border-t border-header-foreground/10 bg-header/90 nav:hidden;
 }

@@ -128,6 +128,20 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
                 </AvatarFallback>
               </Avatar>
             </button>
+
+            {/* Language switcher */}
+            <div className="header-separator" />
+            <Select value={language} onValueChange={(val) => { setLanguage(val); localStorage.setItem("app-language", val); }}>
+              <SelectTrigger className="header-lang-trigger" aria-label="Changer de langue">
+                <Globe className="h-4 w-4 shrink-0" />
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="FR">FR</SelectItem>
+                <SelectItem value="EN">EN</SelectItem>
+                <SelectItem value="NL">NL</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </div>
 
