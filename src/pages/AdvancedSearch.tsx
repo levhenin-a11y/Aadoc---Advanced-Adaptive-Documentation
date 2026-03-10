@@ -13,7 +13,7 @@ const AdvancedSearch = () => {
     <MainLayout>
       <div className="max-w-4xl mx-auto w-full">
         <h2 className="text-2xl font-serif font-bold text-primary-foreground mb-6">
-          Recherche avancée
+          Recherches avancées
         </h2>
 
         <Card className="bg-card/80 backdrop-blur mb-6">

@@ -13,6 +13,8 @@ import Dashboard from "./pages/Dashboard";
 import AdvancedSearch from "./pages/AdvancedSearch";
 import Disclaimer from "./pages/Disclaimer";
 import RecentActivities from "./pages/RecentActivities";
+import Documents from "./pages/Documents";
+import Archives from "./pages/Archives";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +34,8 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/search" element={<AdvancedSearch />} />
+          <Route path="/documents" element={<Documents />} />
+          <Route path="/archives" element={<Archives />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/recent-activities" element={<RecentActivities />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
