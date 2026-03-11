@@ -487,15 +487,15 @@ Section index
 }
 
 .header-mobile-menu-btn .header-mobile-menu-icon {
-  @apply h-7 w-7 sm:h-11 sm:w-11 md:h-11 md:w-11;
+  @apply h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9;
 }
 
 .header-mobile-close-btn {
-  @apply h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16;
+  @apply h-12 w-12 md:h-14 md:w-14;
 }
 
 .header-mobile-close-btn .header-mobile-close-icon {
-  @apply h-7 w-7 sm:h-10 sm:w-10 md:h-12 md:w-12;
+  @apply h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9;
 }
 
 .header-overlay {
