@@ -26,6 +26,6 @@ Les JIRA's sont bien distincts: entre ceux dans __Lovable__ et ceux dans __Visua
 - [x] Harmonisation H2: BASE : centré ou à gauche?
 
 ### 2.2 Divers
-- [ ] Activités récentes avec 's'
-- [ ] Supprimer ~~Sécurité~~ et ~~Aide~~ dans sous-menu Paramètres
-- [ ] Hamburger plus grand
+- [X] Activités récentes avec 's'
+- [X] Supprimer ~~Sécurité~~ et ~~Aide~~ dans sous-menu Paramètres
+- [X] Hamburger plus grand

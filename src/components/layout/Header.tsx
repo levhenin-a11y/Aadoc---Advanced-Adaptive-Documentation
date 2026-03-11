@@ -181,10 +181,10 @@ const Header = ({ username = "heninvu" }: HeaderProps) => {
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(false)}
-              className="header-icon-btn"
+              className="header-icon-btn header-mobile-close-btn"
               aria-label="Fermer le menu"
             >
-              <X className="h-6 w-6" />
+              <X className="header-mobile-close-icon" />
             </Button>
           </div>
 
