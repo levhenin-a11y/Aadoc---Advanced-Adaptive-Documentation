@@ -17,7 +17,7 @@ interface MenuSection {
 const menuSections: MenuSection[] = [
   {
     icon: Home,
-    label: "Accueil",
+    label: "Accueilo",
     items: [
       { label: "Tableau de bord", href: "/dashboard", icon: Home },
       { label: "Activités récentes", href: "/recent-activities", icon: FileText },
