@@ -10,6 +10,7 @@ interface AccountData {
   login: string;
   entity: string;
   visibility: string;
+  phone: string;
 }
 
 const loadSavedAccount = (): AccountData => ({
@@ -17,6 +18,7 @@ const loadSavedAccount = (): AccountData => ({
   login: localStorage.getItem("account-login") || "heninvu",
   entity: localStorage.getItem("account-entity") || "",
   visibility: localStorage.getItem("account-visibility") || "DG",
+  phone: localStorage.getItem("account-phone") || "",
 });
 
 const EditAccount = () => {
@@ -34,6 +36,7 @@ const EditAccount = () => {
     localStorage.setItem("account-login", account.login);
     localStorage.setItem("account-entity", account.entity);
     localStorage.setItem("account-visibility", account.visibility);
+    localStorage.setItem("account-phone", account.phone);
 
     window.dispatchEvent(new Event("account-updated"));
 
@@ -103,6 +106,24 @@ const EditAccount = () => {
           />
           <p className="text-xs text-muted-foreground">
             DG, UNIT, SERVICE, SECTOR. Plus votre niveau est haut, plus vous pourrez voir de documents dans la Base de Données. Seul votre MANAGER peut modifier ce niveau
+          </p>
+        </div>
+
+        {/* Téléphone portable */}
+        <div className="space-y-2">
+          <Label htmlFor="phone" className="text-base font-semibold text-card-foreground">
+            Téléphone portable
+          </Label>
+          <Input
+            id="phone"
+            type="tel"
+            placeholder="+32 470 00 00 00"
+            value={account.phone}
+            onChange={(e) => setAccount((prev) => ({ ...prev, phone: e.target.value }))}
+            className="bg-card text-card-foreground border-border"
+          />
+          <p className="text-xs text-muted-foreground">
+            Utilisé pour les notifications par SMS si activé dans vos paramètres de notifications
           </p>
         </div>
 
