@@ -18,6 +18,7 @@ const loadSavedAccount = (): AccountData => ({
   login: localStorage.getItem("account-login") || "heninvu",
   entity: localStorage.getItem("account-entity") || "",
   visibility: localStorage.getItem("account-visibility") || "DG",
+  phone: localStorage.getItem("account-phone") || "",
 });
 
 const EditAccount = () => {
