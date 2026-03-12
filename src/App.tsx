@@ -16,6 +16,11 @@ import RecentActivities from "./pages/RecentActivities";
 import Documents from "./pages/Documents";
 import Archives from "./pages/Archives";
 import Notifications from "./pages/Notifications";
+import Upload from "./pages/Upload";
+import PendingValidation from "./pages/PendingValidation";
+import Signataires from "./pages/Signataires";
+import Workflows from "./pages/Workflows";
+import Templates from "./pages/Templates";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +45,11 @@ const App = () => (
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/recent-activities" element={<RecentActivities />} />
           <Route path="/notifications" element={<Notifications />} />
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/pending" element={<PendingValidation />} />
+          <Route path="/signataires" element={<Signataires />} />
+          <Route path="/workflows" element={<Workflows />} />
+          <Route path="/templates" element={<Templates />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
