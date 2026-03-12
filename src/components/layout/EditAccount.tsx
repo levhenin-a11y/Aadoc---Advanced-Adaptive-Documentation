@@ -10,6 +10,7 @@ interface AccountData {
   login: string;
   entity: string;
   visibility: string;
+  phone: string;
 }
 
 const loadSavedAccount = (): AccountData => ({
