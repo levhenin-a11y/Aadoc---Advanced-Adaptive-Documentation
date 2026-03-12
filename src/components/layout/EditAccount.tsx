@@ -36,6 +36,7 @@ const EditAccount = () => {
     localStorage.setItem("account-login", account.login);
     localStorage.setItem("account-entity", account.entity);
     localStorage.setItem("account-visibility", account.visibility);
+    localStorage.setItem("account-phone", account.phone);
 
     window.dispatchEvent(new Event("account-updated"));
 
