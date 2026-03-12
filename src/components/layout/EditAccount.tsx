@@ -109,6 +109,24 @@ const EditAccount = () => {
           </p>
         </div>
 
+        {/* Téléphone portable */}
+        <div className="space-y-2">
+          <Label htmlFor="phone" className="text-base font-semibold text-card-foreground">
+            Téléphone portable
+          </Label>
+          <Input
+            id="phone"
+            type="tel"
+            placeholder="+32 470 00 00 00"
+            value={account.phone}
+            onChange={(e) => setAccount((prev) => ({ ...prev, phone: e.target.value }))}
+            className="bg-card text-card-foreground border-border"
+          />
+          <p className="text-xs text-muted-foreground">
+            Utilisé pour les notifications par SMS si activé dans vos paramètres de notifications
+          </p>
+        </div>
+
         {/* Boutons Sauvegarder / Annuler */}
         <div className="flex justify-end gap-4 pt-4">
           <Button
