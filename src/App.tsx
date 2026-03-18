@@ -21,6 +21,7 @@ import PendingValidation from "./pages/PendingValidation";
 import Signataires from "./pages/Signataires";
 import Workflows from "./pages/Workflows";
 import Templates from "./pages/Templates";
+import Delegations from "./pages/Delegations";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/signataires" element={<Signataires />} />
           <Route path="/workflows" element={<Workflows />} />
           <Route path="/templates" element={<Templates />} />
+          <Route path="/delegations" element={<Delegations />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

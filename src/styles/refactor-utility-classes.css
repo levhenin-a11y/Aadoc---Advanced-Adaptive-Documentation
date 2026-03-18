@@ -398,6 +398,47 @@ Section index
   @apply text-xs text-muted-foreground;
 }
 
+/* Delegations */
+.delegation-entry {
+  @apply space-y-4 rounded-lg border border-border bg-muted/30 p-5;
+}
+
+.delegation-entry-header {
+  @apply flex items-center justify-between;
+}
+
+.delegation-remove-btn {
+  @apply text-destructive hover:text-destructive/80;
+}
+
+.delegation-combobox {
+  @apply w-full justify-start font-normal;
+}
+
+.delegation-combobox-popover {
+  @apply w-[--radix-popover-trigger-width] p-0;
+}
+
+.delegation-dates {
+  @apply flex flex-col gap-4 sm:flex-row;
+}
+
+.delegation-date-btn {
+  @apply w-full justify-start font-normal;
+}
+
+.delegation-checkbox-row {
+  @apply flex items-center gap-3;
+}
+
+.delegation-checkbox-label {
+  @apply cursor-pointer text-sm font-normal text-card-foreground;
+}
+
+.delegation-add-btn {
+  @apply w-full border-dashed border-border text-muted-foreground hover:text-foreground hover:bg-muted;
+}
+
 /* -------------------------------------------------- */
 /* 5) Buttons */
 .btn-secondary {
