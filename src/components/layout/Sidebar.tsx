@@ -56,6 +56,7 @@ const menuSections: MenuSection[] = [
       { label: "Account", href: "/account", icon: UserCog },
       { label: "Préférences", href: "/preferences", icon: Palette },
       { label: "Notifications", href: "/notifications", icon: Bell },
+      { label: "Délégations", href: "/delegations", icon: UserRoundCheck },
       //{ label: "Sécurité", href: "/security", icon: Shield },
       //{ label: "Aide", href: "/help", icon: HelpCircle },
     ],
