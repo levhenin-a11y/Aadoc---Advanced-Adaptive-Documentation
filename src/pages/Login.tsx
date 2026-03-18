@@ -21,7 +21,7 @@ const Login = () => {
     const homepage = localStorage.getItem("pref-homepage") || "/";
     navigate(homepage);
   };
-  return <div className="login-page">
+  return <div className="login-page bg-app-gradient">
       {/* Main Content */}
       <div className="login-main">
         <div className="login-shell">
