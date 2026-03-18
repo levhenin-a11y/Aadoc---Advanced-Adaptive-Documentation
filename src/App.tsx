@@ -21,6 +21,7 @@ import PendingValidation from "./pages/PendingValidation";
 import Signataires from "./pages/Signataires";
 import Workflows from "./pages/Workflows";
 import Templates from "./pages/Templates";
+import Delegations from "./pages/Delegations";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
