@@ -204,7 +204,7 @@ Section index
 }
 
 .login-main {
-  @apply flex flex-1 items-center justify-center bg-primary p-4;
+  @apply flex flex-1 items-center justify-center p-4;
 }
 
 .login-shell {
