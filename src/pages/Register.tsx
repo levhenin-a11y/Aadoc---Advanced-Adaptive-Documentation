@@ -67,7 +67,7 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <div className="flex-1 flex items-center justify-center p-4 bg-primary">
+      <div className="flex-1 flex items-center justify-center p-4 bg-app-gradient">
         <div className="w-full max-w-4xl flex flex-col md:flex-row rounded-xl overflow-hidden shadow-2xl">
           {/* Image Section */}
           <div className="md:w-1/2 bg-surface-tertiary">
