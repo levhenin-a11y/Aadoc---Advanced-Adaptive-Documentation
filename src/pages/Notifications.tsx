@@ -143,8 +143,8 @@ const Notifications = () => {
 
   return (
     <MainLayout>
-      <div className="text-center mb-8">
-        <h2 className="tagline-title">Notifications</h2>
+      <div className="title-container">
+        <h2>Notifications</h2>
       </div>
 
       <div className="notifications-layout">

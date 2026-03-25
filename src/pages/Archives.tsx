@@ -69,8 +69,8 @@ const Archives = () => {
 
   return (
     <MainLayout>
-      <div className="max-w-5xl mx-auto w-full">
-        <h2 className="text-2xl font-serif font-bold text-primary-foreground mb-6">
+      <div className="title-container">
+        <h2>
           Archives
         </h2>
 

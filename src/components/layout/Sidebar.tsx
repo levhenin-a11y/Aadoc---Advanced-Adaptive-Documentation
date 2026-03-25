@@ -45,7 +45,7 @@ const menuSections: MenuSection[] = [
     label: "Assigner",
     items: [
       { label: "Rechercher un workflow", href: "/workflows", icon: Search },
-      { label: "e-Signataires", href: "/signataires", icon: UserCheck },
+      { label: "Signatures électroniques", href: "/signataires", icon: UserCheck },
       { label: "Templates de circuit", href: "/templates", icon: GitBranch },
     ],
   },

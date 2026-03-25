@@ -5,8 +5,8 @@ const Preferences = () => {
   return (
     <MainLayout>
       {/* Title */}
-      <div className="text-center mb-8">
-        <h2 className="tagline-title">
+      <div className="title-container">
+        <h2>
           Préférences
         </h2>
       </div>

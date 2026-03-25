@@ -123,12 +123,26 @@ Section index
 
 /* -------------------------------------------------- */
 /* 3) Pages */
+.title-container {
+  @apply max-w-5xl mx-auto w-full;
+}
+
 .tagline-block {
   @apply mb-8 text-center;
 }
 
+/*
 .tagline-title {
-  @apply text-xl font-medium text-primary-foreground md:text-2xl;
+  @apply mb-4 text-xl font-medium text-primary-foreground md:text-2xl;
+}
+
+.tagline-title-serif {
+  @apply mb-4 font-serif text-xl font-medium text-primary-foreground md:text-2xl;
+}
+*/
+
+.section-subtitle {
+  @apply text-base font-semibold;
 }
 
 .action-grid {

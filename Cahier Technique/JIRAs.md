@@ -25,7 +25,10 @@ Les JIRA's sont bien distincts: entre ceux dans __Lovable__ et ceux dans __Visua
 ### 2.1 Linkage
 - [x] Menu Supérieur: Documentation et Support: liens *lambda*
 - [ ] Harmonisation boutons: BASE : Contact
-- [x] Harmonisation H2: BASE : centré ou à gauche?
+- [ ] Harmonisation H3: semantic true based rule or not? TBI
+- [ ] Find solution for unconsistency in main container (under H2): sometimes full-width, sometimes not...
+- [ ] Adaptation H2 for all pages under Télécharger & Assigner
+- [x] Harmonisation H2: BASE : centré ou à gauche? --> have been put align-left and verbose tailwind classes have been turn into H2 semantic true based rule (in index.css)
 
 ### 2.2 Divers
 - [X] Activités récentes avec 's'

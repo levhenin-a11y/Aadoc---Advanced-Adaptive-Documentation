@@ -169,6 +169,10 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
+
+  h2 {
+    @apply mb-4 font-serif text-xl font-medium text-primary-foreground md:text-2xl;
+  }
 }
 
 /* Custom utility classes */

@@ -6,8 +6,8 @@ const Index = () => {
   return (
     <MainLayout>
       {/* Tagline */}
-      <div className="tagline-block">
-        <h2 className="tagline-title">
+      <div className="title-container">
+        <h2>
           Consult / Upload / Assign &gt; Done.
         </h2>
       </div>
