@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
@@ -157,9 +157,9 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                     {section.items.map((item) => {
                       const isActive = currentPath === item.href;
                       return (
-                        <a
+                        <Link
                           key={item.href}
-                          href={item.href}
+                          to={item.href}
                           className={cn(
                             "sidebar-item",
                             isActive 
@@ -175,7 +175,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                         >
                           <item.icon className="sidebar-item-icon" aria-hidden="true" />
                           <span>{item.label}</span>
-                        </a>
+                        </Link>
                       );
                     })}
                   </div>
