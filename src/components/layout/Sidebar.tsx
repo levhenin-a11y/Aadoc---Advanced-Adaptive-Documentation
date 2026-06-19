@@ -72,10 +72,12 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
   const toggleSection = (label: string) => {
     setExpandedSections((prev) =>
-      prev.includes(label)
-        ? prev.filter((l) => l !== label)
-        : [...prev, label]
+      prev.includes(label) ? [] : [label]
     );
+  };
+
+  const openSection = (label: string) => {
+    setExpandedSections([label]);
   };
 
   return (
@@ -122,9 +124,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                   onClick={() => {
                     if (!isOpen) {
                       onClose();
-                      setExpandedSections((prev) =>
-                        prev.includes(section.label) ? prev : [...prev, section.label]
-                      );
+                      openSection(section.label);
                     } else {
                       toggleSection(section.label);
                     }
