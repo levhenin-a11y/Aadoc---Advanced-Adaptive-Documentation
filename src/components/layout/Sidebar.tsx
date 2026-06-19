@@ -1,6 +1,7 @@
-import { ChevronRight, ChevronDown, Home, FileSearch, Upload, Users, Settings, Database, FolderOpen, FileUp, FileCheck, Search, UserCheck, GitBranch, FileText, Palette, Bell, Shield, HelpCircle, UserCog, UserRoundCheck } from "lucide-react";
+import { ChevronRight, ChevronDown, Home, FileSearch, Upload, Users, Settings, Database, FolderOpen, FileUp, FileCheck, Search, UserCheck, GitBranch, FileText, Palette, Bell, UserCog, UserRoundCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 interface SidebarProps {
