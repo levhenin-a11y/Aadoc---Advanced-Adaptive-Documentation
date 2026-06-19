@@ -1,6 +1,7 @@
-import { ChevronRight, ChevronDown, Home, FileSearch, Upload, Users, Settings, Database, FolderOpen, FileUp, FileCheck, Search, UserCheck, GitBranch, FileText, Palette, Bell, Shield, HelpCircle, UserCog, UserRoundCheck } from "lucide-react";
+import { ChevronRight, ChevronDown, Home, FileSearch, Upload, Users, Settings, Database, FolderOpen, FileUp, FileCheck, Search, UserCheck, GitBranch, FileText, Palette, Bell, UserCog, UserRoundCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 interface SidebarProps {
@@ -67,6 +68,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const [expandedSections, setExpandedSections] = useState<string[]>(["Accueil"]);
   const location = useLocation();
   const currentPath = location.pathname;
+  const isMobile = useIsMobile();
 
   const toggleSection = (label: string) => {
     setExpandedSections((prev) =>
@@ -165,6 +167,11 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                               : "sidebar-item--inactive"
                           )}
                           aria-current={isActive ? "page" : undefined}
+                          onClick={() => {
+                            if (isMobile) {
+                              onClose();
+                            }
+                          }}
                         >
                           <item.icon className="sidebar-item-icon" aria-hidden="true" />
                           <span>{item.label}</span>
