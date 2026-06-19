@@ -167,6 +167,11 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                               : "sidebar-item--inactive"
                           )}
                           aria-current={isActive ? "page" : undefined}
+                          onClick={() => {
+                            if (isMobile) {
+                              onClose();
+                            }
+                          }}
                         >
                           <item.icon className="sidebar-item-icon" aria-hidden="true" />
                           <span>{item.label}</span>
