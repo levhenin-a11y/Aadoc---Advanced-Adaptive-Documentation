@@ -124,9 +124,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                   onClick={() => {
                     if (!isOpen) {
                       onClose();
-                      setExpandedSections((prev) =>
-                        prev.includes(section.label) ? prev : [...prev, section.label]
-                      );
+                      openSection(section.label);
                     } else {
                       toggleSection(section.label);
                     }
