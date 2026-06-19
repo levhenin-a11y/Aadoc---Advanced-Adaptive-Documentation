@@ -68,6 +68,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const [expandedSections, setExpandedSections] = useState<string[]>(["Accueil"]);
   const location = useLocation();
   const currentPath = location.pathname;
+  const isMobile = useIsMobile();
 
   const toggleSection = (label: string) => {
     setExpandedSections((prev) =>
