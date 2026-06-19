@@ -13,12 +13,20 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     return localStorage.getItem("pref-sidebar") === "open";
   });
 
+  const toggleSidebar = () => {
+    setSidebarOpen((prev) => {
+      const next = !prev;
+      localStorage.setItem("pref-sidebar", next ? "open" : "closed");
+      return next;
+    });
+  };
+
   return (
     <div className="app-shell">
       <Header />
       
       <div className="app-body">
-        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(!sidebarOpen)} />
+        <Sidebar isOpen={sidebarOpen} onClose={toggleSidebar} />
         
         <main 
           className={cn(
