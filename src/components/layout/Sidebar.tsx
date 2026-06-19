@@ -76,6 +76,10 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     );
   };
 
+  const openSection = (label: string) => {
+    setExpandedSections([label]);
+  };
+
   return (
     <aside
       className={cn(
