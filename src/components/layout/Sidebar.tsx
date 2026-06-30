@@ -65,9 +65,12 @@ const menuSections: MenuSection[] = [
 ];
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
-  const [expandedSections, setExpandedSections] = useState<string[]>(["Accueil"]);
   const location = useLocation();
   const currentPath = location.pathname;
+  const activeSection = menuSections.find((s) =>
+    s.items.some((i) => i.href === currentPath)
+  )?.label ?? "Accueil";
+  const [expandedSections, setExpandedSections] = useState<string[]>([activeSection]);
   const isMobile = useIsMobile();
 
   const toggleSection = (label: string) => {
